@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "bundleIdentifier": "it.macontrol.remote",
+  "latest": {
+    "version": "1.0.0",
+    "build": 52,
+    "date": "2026-11-22",
+    "minimumSystemVersion": "26.0",
+    "url": "../downloads/MAControl.dmg",
+    "sha256": "cfdea98140a561f3f179090b67253f985bfcd242ebab92f9b3e6726d1245836e",
+    "size": 5883921,
+    "notes": {
+      "it": "Prima versione di MAControl per Mac: controllo remoto cifrato end-to-end da iPhone, iPad e Apple Vision Pro, in casa e da fuori casa.",
+      "en": "First release of MAControl for Mac: end-to-end encrypted remote control from iPhone, iPad and Apple Vision Pro, at home and away.",
+      "de": "Erste Version von MAControl für den Mac: Ende-zu-Ende-verschlüsselte Fernsteuerung von iPhone, iPad und Apple Vision Pro, zu Hause und unterwegs.",
+      "es": "Primera versión de MAControl para Mac: control remoto con cifrado de extremo a extremo desde iPhone, iPad y Apple Vision Pro, en casa y fuera de casa.",
+      "fr": "Première version de MAControl pour Mac : contrôle à distance chiffré de bout en bout depuis l’iPhone, l’iPad et l’Apple Vision Pro, à la maison comme à l’extérieur.",
+      "ja": "Mac用MAControlの最初のリリース：iPhone、iPad、Apple Vision Proからのエンドツーエンド暗号化されたリモート操作に、自宅でも外出先でも対応。",
+      "ko": "Mac용 MAControl 첫 번째 버전: iPhone, iPad 및 Apple Vision Pro에서 집 안팎 어디서나 종단 간 암호화된 원격 제어.",
+      "pt-BR": "Primeira versão do MAControl para Mac: controle remoto com criptografia de ponta a ponta pelo iPhone, iPad e Apple Vision Pro, em casa e fora de casa.",
+      "ru": "Первая версия MAControl для Mac: удаленное управление со сквозным шифрованием с iPhone, iPad и Apple Vision Pro — дома и вне дома.",
+      "zh-Hans": "Mac 版 MAControl 首个版本：在家或外出时，均可通过 iPhone、iPad 和 Apple Vision Pro 进行端到端加密的远程控制。"
+    }
+  }
+}

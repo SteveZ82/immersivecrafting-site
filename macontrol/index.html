@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MAControl — Your Mac, everywhere.</title>
+<meta name="description" content="Control your Mac from iPhone, iPad and Apple Vision Pro. Post-quantum end-to-end encryption, 60 fps HEVC, no ports to open. In 10 languages. Launch price €9.">
+<meta name="theme-color" content="#05070F">
+<meta property="og:title" content="MAControl — Your Mac, everywhere.">
+<meta property="og:description" content="Control your Mac from iPhone, iPad and Apple Vision Pro. Post-quantum end-to-end encryption, 60 fps HEVC, no ports to open. In 10 languages. Launch price €9.">
+<meta property="og:image" content="assets/vision-1200.jpg">
+<meta property="og:locale" content="en_US">
+<link rel="alternate" hreflang="en" href="https://immersivecrafting.com/macontrol/">
+<link rel="alternate" hreflang="it" href="https://immersivecrafting.com/macontrol/it/">
+<link rel="alternate" hreflang="de" href="https://immersivecrafting.com/macontrol/de/">
+<link rel="alternate" hreflang="es" href="https://immersivecrafting.com/macontrol/es/">
+<link rel="alternate" hreflang="fr" href="https://immersivecrafting.com/macontrol/fr/">
+<link rel="alternate" hreflang="pt-BR" href="https://immersivecrafting.com/macontrol/pt-br/">
+<link rel="alternate" hreflang="ja" href="https://immersivecrafting.com/macontrol/ja/">
+<link rel="alternate" hreflang="ko" href="https://immersivecrafting.com/macontrol/ko/">
+<link rel="alternate" hreflang="ru" href="https://immersivecrafting.com/macontrol/ru/">
+<link rel="alternate" hreflang="zh-Hans" href="https://immersivecrafting.com/macontrol/zh-hans/">
+<link rel="alternate" hreflang="x-default" href="https://immersivecrafting.com/macontrol/">
+<link rel="icon" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/icon-256.png">
+<style>
+:root{
+  --bg:#05070F; --bg2:#0A0E1C; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+  --text:#F4F6FB; --mute:#9AA3B5; --dim:#6B7487;
+  --blue:#2F6BFF; --cyan:#6BD6FF; --sun:#FF8C47;
+  --grad:linear-gradient(100deg,#6BD6FF 0%,#2F6BFF 45%,#9B7BFF 75%,#FF8C47 100%);
+  --r:28px; --pad:clamp(20px,5vw,56px); --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.display{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;font-weight:700;letter-spacing:-.035em;line-height:1.02}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.lead{font-size:clamp(18px,2.1vw,22px);line-height:1.45;color:var(--mute);max-width:640px}
+section{position:relative}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(5,7,15,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:18px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--mute)}
+.nav-links a:hover{color:var(--text)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:#fff;color:#05070F}
+.btn-primary:hover{box-shadow:0 10px 40px -8px rgba(107,214,255,.55)}
+.btn-ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.btn-ghost:hover{background:rgba(255,255,255,.13)}
+.btn-sm{height:38px;padding:0 16px;font-size:14px}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* hero */
+.hero{padding:calc(120px + env(safe-area-inset-top)) 0 40px;text-align:center;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-20% -10% auto;height:900px;background:radial-gradient(600px 380px at 30% 30%,rgba(47,107,255,.35),transparent 70%),radial-gradient(520px 340px at 75% 20%,rgba(255,140,71,.22),transparent 70%);pointer-events:none;z-index:-1}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 8px 7px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:14px;color:var(--mute)}
+.pill b{color:var(--text);font-weight:600}
+.pill span.tag{background:var(--sun);color:#1a0d04;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px}
+.hero .wrap>*,.stage{animation:up 1s cubic-bezier(.2,.8,.2,1) both}.hero .wrap>*:nth-child(2){animation-delay:.06s}.hero .wrap>*:nth-child(3){animation-delay:.12s}.hero .wrap>*:nth-child(4){animation-delay:.18s}.stage{animation-delay:.26s}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.hero h1{font-size:clamp(48px,10.5vw,132px);margin:26px auto 0;max-width:12ch}
+.hero .lead{margin:24px auto 0;text-align:center}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.cta-note{margin-top:14px;font-size:13px;color:var(--dim)}
+.stage{position:relative;margin:64px auto 0;max-width:1100px;padding:0 var(--pad)}
+.stage .frame{border-radius:clamp(16px,2.4vw,30px);overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 120px -30px rgba(47,107,255,.55),0 30px 60px -30px rgba(0,0,0,.9)}
+.stage .phone{position:absolute;right:calc(var(--pad) - 18px);bottom:-60px;width:clamp(120px,19%,210px)}
+.phone{border-radius:clamp(22px,3.2vw,40px);padding:clamp(4px,.55vw,7px);background:linear-gradient(150deg,#4a505c,#0d0f14 45%,#2c3038);box-shadow:0 30px 60px -20px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.15)}
+.phone img{border-radius:clamp(18px,2.7vw,34px)}
+.devices{display:flex;gap:clamp(18px,4vw,48px);justify-content:center;flex-wrap:wrap;margin-top:110px;color:var(--dim);font-weight:600;font-size:15px;letter-spacing:.02em}
+.devices span{display:flex;align-items:center;gap:8px}
+.devices i{width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block}
+
+/* blocks */
+.block{padding:clamp(90px,12vw,150px) 0 0}
+.head{max-width:760px}
+.head h2{font-size:clamp(38px,6.4vw,76px);margin-top:14px}
+.head .lead{margin-top:18px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:52px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,3vw,34px);overflow:hidden;position:relative;min-height:240px}
+.card h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.card p{color:var(--mute);margin-top:10px;font-size:16px}
+.c4{grid-column:span 4}.c3{grid-column:span 3}.c2{grid-column:span 2}.c6{grid-column:span 6}
+.big{font-size:clamp(72px,11vw,132px);font-weight:800;letter-spacing:-.05em;line-height:.9}
+.unit{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-top:10px}
+.glow-blue{background:radial-gradient(420px 260px at 85% 110%,rgba(47,107,255,.45),transparent 70%),var(--card)}
+.glow-sun{background:radial-gradient(380px 240px at 10% 120%,rgba(255,140,71,.35),transparent 70%),var(--card)}
+.card .art{margin:26px -34px -34px;}
+.card .art img{width:100%}
+.lock{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(140deg,#6BD6FF,#2F6BFF);margin-bottom:22px}
+.lock svg{width:28px;height:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chips span{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,140,71,.12);color:#FFB487}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--cyan);margin-top:18px;line-height:1.7}
+/* Peer to Peer: testo a sinistra, iPhone e Mac collegati senza router a destra */
+.p2p{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;min-height:0}
+.p2p h3{margin-top:12px}
+.p2p .viz svg{width:100%;height:auto;max-height:210px;display:block}
+.p2p .wave{stroke-dasharray:6 10;animation:p2pflow 1.6s linear infinite}
+.p2p .w2{animation-duration:2s}.p2p .w3{animation-duration:2.4s}
+@keyframes p2pflow{to{stroke-dashoffset:-32}}
+@media(prefers-reduced-motion:reduce){.p2p .wave{animation:none}}
+.chips.cy span{background:rgba(107,214,255,.12);color:var(--cyan)}
+@media(max-width:900px){.c4,.c3,.c2{grid-column:span 6}.bento{gap:14px}}
+@media(max-width:900px){.p2p{grid-template-columns:1fr}.p2p .viz{max-width:360px}}
+@media(min-width:620px) and (max-width:900px){.c2{grid-column:span 3}}
+
+/* showcase */
+.show{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;margin-top:56px}
+.show.rev{grid-template-columns:1fr 1.25fr}
+.show.rev .media{order:2}
+.media .shot{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.list{list-style:none;margin-top:26px;display:grid;gap:18px}
+.list li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
+.list li b{display:block;font-size:17px}
+.list li span{color:var(--mute);font-size:15.5px}
+.dot{width:28px;height:28px;border-radius:9px;background:rgba(107,214,255,.12);display:grid;place-items:center;color:var(--cyan);font-weight:800;font-size:13px}
+.duo-wrap{position:relative}
+.duo-wrap .shot{transform:perspective(1400px) rotateX(18deg);transform-origin:50% 100%}
+.duo-wrap:after{content:"";position:absolute;left:8%;right:8%;bottom:-30px;height:60px;background:radial-gradient(closest-side,rgba(47,107,255,.5),transparent);filter:blur(20px);z-index:-1}
+@media(max-width:900px){.show,.show.rev{grid-template-columns:1fr}.show.rev .media{order:0}}
+
+.minis{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.minis .shot{border-radius:18px}
+
+/* speed strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.stat{border-top:1px solid var(--line);padding-top:22px}
+.stat .big{font-size:clamp(64px,9vw,112px)}
+.stat p{color:var(--mute);margin-top:8px;font-size:15.5px}
+@media(max-width:760px){.stats{grid-template-columns:1fr}}
+
+/* pricing */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;align-items:stretch}
+.plan{border-radius:32px;padding:clamp(28px,4vw,44px);border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.plan.hot{background:radial-gradient(520px 320px at 100% 0%,rgba(255,140,71,.28),transparent 70%),radial-gradient(520px 320px at 0% 100%,rgba(47,107,255,.35),transparent 70%),#0B1024;border-color:rgba(107,214,255,.35)}
+.plan .tag{align-self:flex-start;background:var(--sun);color:#1a0d04;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:18px}
+.plan h3{font-size:24px;letter-spacing:-.02em}
+.plan .for{color:var(--mute);margin-top:4px}
+.price{display:flex;align-items:baseline;gap:14px;margin-top:26px}
+.price .now{font-size:clamp(64px,8vw,88px);font-weight:800;letter-spacing:-.05em;line-height:1}
+.price .was{font-size:24px;color:var(--dim);text-decoration:line-through;font-weight:600}
+.price small{color:var(--mute);font-size:15px}
+.plan ul{list-style:none;margin:26px 0 30px;display:grid;gap:12px;color:#D7DCE6;font-size:16px}
+.plan li{display:flex;gap:12px;align-items:flex-start}
+.plan li:before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:rgba(107,214,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.2l2.6 2.6L13 6.4' fill='none' stroke='%236BD6FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
+.plan .btn{margin-top:auto;width:100%}
+.plan .fine{font-size:13px;color:var(--dim);margin-top:12px;text-align:center}
+@media(max-width:820px){.pricing{grid-template-columns:1fr}.plan.hot{order:-1}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;counter-reset:s}
+.step{border-radius:var(--r);border:1px solid var(--line);padding:30px;background:var(--card)}
+.step:before{counter-increment:s;content:counter(s);display:block;font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
+.step h3{font-size:20px;letter-spacing:-.01em}
+.step p{color:var(--mute);margin-top:8px;font-size:15.5px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px;margin:44px auto 0}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;font-size:19px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+details[open] summary:after{transform:translateY(-30%) rotate(-135deg)}
+details p{color:var(--mute);padding:0 0 24px;max-width:700px}
+
+/* final */
+.final{margin:clamp(100px,12vw,160px) 0 0;padding:clamp(70px,10vw,120px) var(--pad);text-align:center;border-top:1px solid var(--line);background:radial-gradient(700px 360px at 50% 0%,rgba(47,107,255,.32),transparent 70%)}
+.final img{width:88px;height:88px;border-radius:22px;margin:0 auto 28px;box-shadow:0 20px 60px -10px rgba(47,107,255,.6)}
+.final h2{font-size:clamp(40px,7vw,84px)}
+footer{padding:40px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* mobile sticky buy bar */
+.buybar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:20px;background:rgba(14,19,36,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.buybar.on{transform:none}
+.buybar b{font-size:15px}.buybar s{color:var(--dim);margin-left:6px;font-size:13px}
+.buybar small{display:block;color:var(--mute);font-size:12px}
+@media(max-width:720px){.buybar{display:flex}.stage .phone{width:92px;bottom:-34px;right:calc(var(--pad) - 8px)}.cta .btn{width:100%;max-width:340px}.devices{margin-top:80px;font-size:14px;gap:14px 20px}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.hero .wrap>*,.stage{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* lingua */
+.navr{display:flex;align-items:center;gap:10px}
+.langsel{position:relative;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:var(--text)}
+.langsel:hover{background:rgba(255,255,255,.14)}
+.langsel svg{width:18px;height:18px}
+.langsel select{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:16px;width:100%;height:100%}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.langs a,.langs span{font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;background:rgba(107,214,255,.1);color:#BDEBFF;border:1px solid transparent}
+.langs .on{background:#fff;color:#05070F}
+.langs a:hover{border-color:rgba(107,214,255,.5)}
+.card.lang{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;min-height:0;background:radial-gradient(520px 260px at 0% 0%,rgba(107,214,255,.22),transparent 70%),radial-gradient(420px 240px at 100% 100%,rgba(155,123,255,.25),transparent 70%),var(--card)}
+.card.lang .big{font-size:clamp(96px,14vw,168px)}
+@media(max-width:700px){.card.lang{grid-template-columns:1fr}}
+.footlangs{display:flex;flex-wrap:wrap;gap:6px 16px}
+.footlangs a:hover{color:var(--text)}
+.footlangs .on{color:var(--text)}
+/* CJK: niente spaziatura negativa, a capo per frasi */
+:lang(ja) .display,:lang(ko) .display,:lang(zh-Hans) .display{letter-spacing:-.01em;line-height:1.15}
+:lang(ja) .big,:lang(ko) .big,:lang(zh-Hans) .big{letter-spacing:-.04em}
+:lang(ja),:lang(zh-Hans){word-break:auto-phrase;line-break:strict}
+:lang(ko){word-break:keep-all}
+:lang(ja) body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
+:lang(ko) body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+:lang(zh-Hans) body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+:lang(ja) .eyebrow,:lang(ko) .eyebrow,:lang(zh-Hans) .eyebrow{letter-spacing:.06em}
+/* telefoni: nella barra in alto bastano marchio e lingua (l'acquisto è nell'apertura e nella barra in basso) */
+@media(max-width:560px){.navr .btn{display:none}}
+.buybar>div{min-width:0}
+.buybar small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar .btn{flex:none}
+/* parole lunghe (es. «Бесплатно») non devono allargare le schede dei prezzi */
+.plan{min-width:0}
+.price{flex-wrap:wrap}
+.price .now{font-size:clamp(48px,13vw,88px)}
+/* Note a piè di pagina, stile Apple */
+.fn{font-size:.58em;line-height:0;vertical-align:super;margin-left:2px;font-weight:500;letter-spacing:0}
+.fn a{color:inherit;opacity:.65;text-decoration:none}
+.fn a:hover{opacity:1}
+.big .fn,.unit .fn{font-size:12px}
+.price .fn{align-self:flex-start;font-size:13px;margin-top:6px}
+footer .notes{display:block;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.notes ol{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;line-height:1.5;color:#86868b;max-width:980px}
+.notes li{display:flex;gap:8px}
+.notes li b{font-weight:400;min-width:1em;font-variant-numeric:tabular-nums}
+.notes li:target{color:var(--text)}
+[id^="fn"]{scroll-margin-top:90px}
+footer .legal a{color:var(--dim);text-decoration:none}
+footer .legal a:hover{color:var(--text);text-decoration:underline}
+footer .maker{display:flex;gap:16px}
+.btn .ver{font-size:11.5px;font-weight:500;opacity:.55;margin-left:-2px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+/* Pagina privacy */
+.doc{max-width:760px;margin:0 auto;padding:clamp(120px,14vw,170px) var(--pad) 80px}
+.doc h1{font-size:clamp(36px,6vw,56px);letter-spacing:-.035em;line-height:1.05}
+.doc .upd{color:var(--dim);font-size:14px;margin-top:14px}
+.doc .intro{font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:var(--text);margin-top:28px}
+.doc h2{font-size:22px;letter-spacing:-.015em;margin-top:44px}
+.doc p,.doc li{color:var(--mute);font-size:16px;line-height:1.65}
+.doc p{margin-top:12px}
+.doc ul{margin:12px 0 0;padding-left:1.2em;display:grid;gap:10px}
+.doc b{color:var(--text);font-weight:600}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:rgba(255,255,255,.07);padding:2px 6px;border-radius:6px;word-break:break-all}
+.doc a{color:var(--cyan)}
+/* Vision Pro: iPhone come trackpad e tastiera */
+.padcard{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,56px);align-items:center;min-height:0}
+.padcard h3{margin-top:12px}
+.padshot img{display:block;width:100%;height:auto;border-radius:clamp(14px,2.4vw,26px);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+@media(max-width:900px){.padcard{grid-template-columns:1fr}}
+#vision .c3{min-height:0}
+/* Casi d'uso su iPhone: le tre modalità */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,3vw,36px);display:grid;gap:clamp(20px,3vw,40px);align-items:center}
+.case.wide{grid-column:span 2;grid-template-columns:1fr 1.7fr;background:radial-gradient(520px 300px at 90% 110%,rgba(47,107,255,.38),transparent 70%),var(--card)}
+.case.tall{grid-template-columns:1fr minmax(120px,210px)}
+.case h3{font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.case p{color:var(--mute);margin-top:10px;font-size:16px}
+.case .num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:rgba(107,214,255,.14);color:var(--cyan);margin-bottom:14px}
+.dev{background:#000;border:5px solid #20232e;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 30px 70px -30px rgba(0,0,0,.9)}
+.dev img{display:block;width:100%;height:auto}
+.dev.land{border-radius:7.4%/16%}.dev.port{border-radius:16%/7.4%}
+@media(max-width:900px){.cases{grid-template-columns:1fr}.case.wide{grid-column:auto;grid-template-columns:1fr}.case.tall{grid-template-columns:1fr minmax(110px,170px)}}
+
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+ <div class="wrap">
+  <a class="brand" href="#top"><img src="assets/icon-256.png" alt="">MAControl</a>
+  <nav class="nav-links"><a href="#features">Features</a><a href="#vision">Vision Pro</a><a href="#security">Security</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></nav>
+  <div class="navr">
+   <label class="langsel" title="Language"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg><select id="langsel" aria-label="Language"><option value="en" selected>English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option><option value="pt-BR">Português (Brasil)</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="ru">Русский</option><option value="zh-Hans">简体中文</option></select></label>
+   <a class="btn btn-primary btn-sm" href="#pricing">Get MAControl</a>
+  </div>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="wrap">
+  <a class="pill" href="#pricing"><span>Launch offer: <b>€9</b> instead of €15</span><span class="tag">Until 1 Dec</span></a>
+  <h1 class="display">Your Mac, <span class="grad">everywhere.</span></h1>
+  <p class="lead">Control your Mac from iPhone, iPad and Apple Vision Pro. Encrypted end to end, fluid at 60&nbsp;fps, with no ports to open and no passwords to remember.<sup class="fn"><a href="#fn1">1</a></sup></p>
+  <div class="cta">
+   <a class="btn btn-primary" href="#pricing">Get it for €9</a>
+   <a class="btn btn-ghost" href="downloads/MAControl.dmg" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download for Mac<span class="ver">v1.0.0</span></a>
+  </div>
+  <p class="cta-note">Mac app free · macOS 26 or later · One-time purchase: no in-app purchases, no ads, future updates included</p>
+ </div>
+ <div class="stage">
+  <div class="frame"><img src="assets/vision-1200.jpg" srcset="assets/vision-1200.jpg 1200w, assets/vision-2400.jpg 2400w" sizes="(max-width:1100px) 100vw, 1100px" alt="MAControl on Apple Vision Pro: the Mode window floating in a living room, with sidebar and connection panel" width="2400" height="1350" fetchpriority="high"></div>
+  <div class="phone"><img src="assets/iphone-home.jpg" alt="MAControl home screen on iPhone" width="600" height="1304" loading="lazy"></div>
+ </div>
+ <div class="devices wrap"><span><i></i>iPhone</span><span><i></i>iPad</span><span><i></i>Apple Vision Pro</span><span><i></i>iPhone Duo</span><span><i></i>Mac</span></div>
+</section>
+
+<section class="block" id="features">
+ <div class="wrap">
+  <div class="head rv"><div class="eyebrow">Why MAControl</div><h2 class="display">Everything you love about your Mac. <span style="color:var(--dim)">Nothing in the way.</span></h2></div>
+  <div class="bento">
+   <div class="card c4 glow-blue rv" id="security">
+    <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div>
+    <h3>Post-quantum, end to end.</h3>
+    <p>Screen, keys, clicks, even your unlock password travel encrypted from device to Mac. No middleman server, no account. Identities are sealed in the Secure Enclave.</p>
+    <div class="mono">X-Wing (ML-KEM-768 + X25519) · ML-KEM-1024<br>AES-256-GCM · ML-DSA-87 + P-256</div>
+   </div>
+   <div class="card c2 rv">
+    <div class="big grad">60</div><div class="unit">frames per second<sup class="fn"><a href="#fn1">1</a></sup></div>
+    <p>Hardware HEVC from your Mac’s own media engine. If Wi‑Fi struggles, detail drops — never fluidity.</p>
+   </div>
+   <div class="card c2 glow-sun rv">
+    <div class="big">0</div><div class="unit" style="color:var(--sun)">ports to open</div>
+    <p>MAControl crosses your router by itself. Without your device’s key, the Mac doesn’t even answer.<sup class="fn"><a href="#fn2">2</a></sup></p>
+    <div class="chips"><span>Local network</span><span>Automatic link</span><span>UPnP · NAT‑PMP</span><span>Guided rule</span><span>VPN</span></div>
+   </div>
+   <div class="card c4 rv">
+    <h3>A single Mac app, shaped for your screen.</h3>
+    <p>App Context streams just one app and resizes its window for the device in your hands. Or take the whole screen, or a crop that follows your pointer.</p>
+    <div class="minis">
+     <div class="phone"><img src="assets/iphone-modes.jpg" alt="Choose a mode: FullScreen, crop, App Context" loading="lazy" width="552" height="1200"></div>
+     <div class="phone"><img src="assets/iphone-apps.jpg" alt="App Context: choose a Mac app" loading="lazy" width="552" height="1200"></div>
+    </div>
+   </div>
+   <div class="card c6 p2p glow-blue rv" id="peer-to-peer">
+    <div>
+     <div class="eyebrow">Peer to Peer</div>
+     <h3>No Wi‑Fi? Connect anyway.</h3>
+     <p>In Peer to Peer mode your iPhone talks straight to the Mac next to you: no router, no Wi‑Fi network. It’s the same technology as AirDrop, as smooth as your home network and with the same end‑to‑end encryption. Just keep Wi‑Fi switched on on both devices, even with no network around. And if your network drops mid‑session, MAControl switches over on its own.</p>
+     <div class="chips cy"><span>No router</span><span>No Wi‑Fi network</span><span>End‑to‑end encrypted</span></div>
+    </div>
+    <div class="viz" aria-hidden="true">
+     <svg viewBox="0 0 360 170" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <g class="router" stroke="#6B7487" stroke-width="2"><rect x="158" y="14" width="44" height="22" rx="6"/><path d="M168 14l-5-9M192 14l5-9"/><path d="M150 44l60-36" stroke="#FF8C47" stroke-width="2.5"/></g>
+      <rect x="22" y="44" width="58" height="108" rx="14" stroke="#F4F6FB" stroke-width="3"/>
+      <path d="M43 54h16" stroke="#F4F6FB" stroke-width="3"/>
+      <rect x="246" y="56" width="96" height="66" rx="8" stroke="#F4F6FB" stroke-width="3"/>
+      <path d="M284 122v14M268 140h32" stroke="#F4F6FB" stroke-width="3"/>
+      <path class="wave" d="M96 98c40-28 100-28 140 0" stroke="#6BD6FF" stroke-width="3"/>
+      <path class="wave w2" d="M104 112c36-20 92-20 126 0" stroke="#6BD6FF" stroke-width="3" opacity=".6"/>
+      <path class="wave w3" d="M112 126c32-12 80-12 112 0" stroke="#6BD6FF" stroke-width="3" opacity=".35"/>
+     </svg>
+    </div>
+   </div>
+   <div class="card c6 lang rv" id="languages">
+    <div><div class="big grad">10</div><div class="unit">languages</div></div>
+    <div>
+     <h3>Speaks your language.</h3>
+     <p>The whole interface, alerts included, is translated into ten languages, and MAControl follows your device’s language automatically. This site does too.</p>
+     <div class="langs"><span class="on">English</span><a href="it/index.html" lang="it" data-lang="it">Italiano</a><a href="de/index.html" lang="de" data-lang="de">Deutsch</a><a href="es/index.html" lang="es" data-lang="es">Español</a><a href="fr/index.html" lang="fr" data-lang="fr">Français</a><a href="pt-br/index.html" lang="pt-BR" data-lang="pt-BR">Português (Brasil)</a><a href="ja/index.html" lang="ja" data-lang="ja">日本語</a><a href="ko/index.html" lang="ko" data-lang="ko">한국어</a><a href="ru/index.html" lang="ru" data-lang="ru">Русский</a><a href="zh-hans/index.html" lang="zh-Hans" data-lang="zh-Hans">简体中文</a></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="iphone">
+ <div class="wrap">
+  <div class="head rv"><div class="eyebrow">On iPhone</div><h2 class="display">Three ways <span class="grad">to hold your Mac.</span></h2><p class="lead">Pick the view that fits the moment.</p></div>
+  <div class="cases">
+   <div class="case wide rv">
+    <div><div class="num">1</div><h3>FullScreen</h3><p>Turn the iPhone sideways and the whole desktop is there: every window, the menu bar, the Dock. Ideal for keeping an eye on a render, a download or a build.</p></div>
+    <div class="dev land"><img src="assets/iphone-full.jpg" alt="iPhone in landscape showing the whole Mac desktop in FullScreen mode" loading="lazy" width="1800" height="828"></div>
+   </div>
+   <div class="case tall rv">
+    <div><div class="num">2</div><h3>Crop</h3><p>The Mac screen at a size you can read, held upright in one hand. The view follows the pointer: tick off a note, answer a message, close a dialog.</p></div>
+    <div class="dev port"><img src="assets/iphone-crop.jpg" alt="iPhone in portrait showing part of the Mac desktop in crop mode" loading="lazy" width="720" height="1565"></div>
+   </div>
+   <div class="case tall rv">
+    <div><div class="num">3</div><h3>App Context</h3><p>Just one app, with its window resized to fit your iPhone. It feels like an app on your phone, but it’s running on your Mac.</p></div>
+    <div class="dev port"><img src="assets/iphone-app.jpg" alt="iPhone in portrait showing a single Mac app in App Context mode" loading="lazy" width="720" height="1565"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="vision">
+ <div class="wrap">
+  <div class="show">
+   <div class="media rv">
+    <div class="shot"><img src="assets/vision-1200.jpg" srcset="assets/vision-1200.jpg 1200w, assets/vision-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 640px" alt="MAControl windows in Apple Vision Pro" loading="lazy" width="2400" height="1350"></div>
+    <div class="minis" style="grid-template-columns:.806fr .725fr">
+     <div class="shot"><img src="assets/vision-side.jpg" alt="Sidebar: Connection, FullScreen, App Context, Settings" loading="lazy" width="500" height="620"></div>
+     <div class="shot"><img src="assets/vision-panel.jpg" alt="Live connection panel with route, latency and post-quantum security" loading="lazy" width="620" height="855"></div>
+    </div>
+   </div>
+   <div class="rv">
+    <div class="eyebrow">Apple Vision Pro</div>
+    <h2 class="display" style="font-size:clamp(38px,5.4vw,64px);margin-top:14px">Your Mac, <span class="grad">in your space.</span></h2>
+    <p class="lead" style="margin-top:18px">The Mac stops being a rectangle on a desk. It becomes a window you place in the room, as large as you like.</p>
+    <ul class="list">
+     <li><span class="dot">1</span><div><b>Two ways to see it</b><span>The whole screen, or a single app sized for your space.</span></div></li>
+     <li><span class="dot">2</span><div><b>Always know your link</b><span>Route, latency, bandwidth and security, live in a floating panel.</span></div></li>
+     <li><span class="dot">3</span><div><b>iPhone as a trackpad</b><span>Open MAControl on your iPhone: Vision Pro finds it and connects by itself.<sup class="fn"><a href="#fn3">3</a></sup></span></div></li>
+    </ul>
+   </div>
+  </div>
+  <div class="head rv" style="margin-top:96px"><div class="eyebrow">New on Vision Pro</div><h2 class="display" style="font-size:clamp(34px,4.8vw,58px)">Hands, keys, trackpad. <span class="grad">Your choice.</span></h2></div>
+  <div class="bento">
+   <div class="card c6 padcard glow-blue rv" id="trackpad">
+    <div>
+     <div class="eyebrow">iPhone + Vision Pro</div>
+     <h3>iPhone becomes your trackpad and keyboard</h3>
+     <p>Open MAControl on your iPhone and pick it from the headset. No codes to type; with the same Apple Account it connects by itself. Move the pointer, click, drag, scroll and use Mac gestures while you look at the screen floating in your room.<sup class="fn"><a href="#fn3">3</a></sup></p>
+     <div class="chips cy"><span>No codes</span><span>Full keyboard</span><span>Mac gestures</span></div>
+    </div>
+    <div class="padshot"><img src="assets/duo-pad-900.jpg" srcset="assets/duo-pad-900.jpg 900w, assets/duo-pad-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 560px" alt="MAControl on iPhone Duo as trackpad and keyboard for Apple Vision Pro: full keyboard with function keys and trackpad" loading="lazy" width="1800" height="1266"></div>
+   </div>
+   <div class="card c3 rv"><h3>The right keyboard at the right time</h3><p>Click a text field on the Mac and the keyboard appears by itself. With iPhone connected as a trackpad you type there: the headset keyboard steps aside, and comes back when you disconnect.</p></div>
+   <div class="card c3 rv"><h3>Gestures in the air</h3><p>Swipe three fingers sideways to change desktop, up for Mission Control. Two fingers for Notification Center. Thumb and middle finger for a right click.<sup class="fn"><a href="#fn3">3</a></sup></p></div>
+   <div class="card c3 rv"><h3>Big screen, exact proportions</h3><p>The window takes the shape of your Mac’s display, with no black bars. One tap and it grows as large as it can.</p></div>
+   <div class="card c3 rv"><h3>Mac commands, always at hand</h3><p>⌘, copy, paste, undo, Spotlight, app switching and Lock Mac, all in one toolbar.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="duo">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">iPhone Duo</div><h2 class="display">Fold it. <span class="grad">It’s a MacBook.</span></h2><p class="lead">Open iPhone Duo in an L and rest it on the table: the lower half becomes the keyboard and trackpad of a tiny Mac. Close it, and it steps back.</p></div>
+  <div class="duo-wrap rv" style="max-width:900px;margin:56px auto 0">
+   <div class="shot" style="border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.12)"><img src="assets/duo-deck-900.jpg" srcset="assets/duo-deck-900.jpg 900w, assets/duo-deck-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 900px" alt="iPhone Duo laptop mode: full keyboard and trackpad on the lower half" loading="lazy" width="1800" height="1274"></div>
+  </div>
+  <div class="stats">
+   <div class="stat rv"><h3 style="font-size:21px">A real keyboard</h3><p>Function row, arrows and modifiers, laid out like a MacBook. Every key goes straight to the Mac.</p></div>
+   <div class="stat rv"><h3 style="font-size:21px">A real trackpad</h3><p>Click, drag, scroll, plus the Mac’s gestures: desktops, Mission Control, Notification Center.</p></div>
+   <div class="stat rv"><h3 style="font-size:21px">Silver or Space Black</h3><p>Brushed aluminium finishes. The app reads the hinge and gravity, and flips itself if you turn it round.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="speed">
+ <div class="wrap">
+  <div class="head rv"><div class="eyebrow">Speed &amp; reliability</div><h2 class="display">As fluid as if the Mac were <span class="grad">right here.</span></h2><p class="lead">Your devices talk straight to your Mac over QUIC, with no relay in between. And when one path is closed, MAControl already has another.</p></div>
+  <div class="stats">
+   <div class="stat rv"><div class="big">60<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> fps</span></div><p><b style="color:var(--text)">At home.</b> Never below 45, up to 60&nbsp;Mbps.<sup class="fn"><a href="#fn4">4</a></sup></p></div>
+   <div class="stat rv"><div class="big">60<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> fps</span></div><p><b style="color:var(--text)">Over VPN.</b> Up to 25&nbsp;Mbps, wherever you are.<sup class="fn"><a href="#fn5">5</a></sup></p></div>
+   <div class="stat rv"><div class="big">1600<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> px</span></div><p><b style="color:var(--text)">From the internet.</b> Adaptive up to 16&nbsp;Mbps, even on 5G.<sup class="fn"><a href="#fn6">6</a></sup></p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="pricing">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Pricing</div><h2 class="display">Pay once. <span class="grad">Keep it forever.</span></h2><p class="lead">The Mac app is free. The client for iPhone, iPad and Apple Vision Pro is a one-time purchase on the App Store: no in-app purchases, no ads. It’s yours forever, and all future updates are included.</p></div>
+  <div class="pricing">
+   <div class="plan rv">
+    <h3>MAControl for Mac</h3>
+    <div class="for">The server that lets you reach your Mac</div>
+    <div class="price"><span class="now">Free</span></div>
+    <ul>
+     <li>Lives quietly in the menu bar</li>
+     <li>Access from home and away, no ports to open</li>
+     <li>Security alerts and access log</li>
+     <li>Requires macOS 26 or later</li>
+    </ul>
+    <a class="btn btn-ghost" href="downloads/MAControl.dmg" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Download .dmg<span class="ver">v1.0.0</span></a>
+    <div class="fine">Version 1.0.0 (52) · 5.9 MB · Intel and Apple silicon · Notarized by Apple</div>
+   </div>
+   <div class="plan hot rv">
+    <span class="tag">Launch offer</span>
+    <h3>MAControl client</h3>
+    <div class="for">iPhone · iPad · Apple Vision Pro</div>
+    <div class="price"><span class="now">€9</span><span class="was">€15</span><sup class="fn"><a href="#fn7">7</a></sup></div>
+    <ul>
+     <li>Full screen, crop and App Context modes</li>
+     <li>Laptop mode on iPhone Duo</li>
+     <li>iPhone as trackpad and keyboard for Vision Pro</li>
+     <li>Post-quantum end-to-end encryption</li>
+     <li>No in-app purchases · no ads</li>
+     <li>Yours forever · future updates included</li>
+    </ul>
+    <a class="btn btn-primary" href="#" data-appstore>Get it on the App Store</a>
+    <div class="fine">Launch price €9, then €15 · iOS, iPadOS and visionOS 26 or later</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="start">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Get started</div><h2 class="display">Ready in three steps.</h2></div>
+  <div class="steps">
+   <div class="step rv"><h3>Install it on your Mac</h3><p>Download the .dmg, drag MAControl to Applications and open it. Grant Screen Recording and Accessibility once.</p></div>
+   <div class="step rv"><h3>Pair your device</h3><p>Open the app on iPhone, iPad or Vision Pro. Your Mac appears by itself: tap Pair and confirm the six-digit code on the Mac.</p></div>
+   <div class="step rv"><h3>Take it anywhere</h3><p>On the Mac, choose Access Away from Home and press Turn On. From then on it works everywhere, even on 5G.<sup class="fn"><a href="#fn8">8</a></sup></p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="faq">
+ <div class="wrap">
+  <div class="head center rv"><h2 class="display">Q&amp;A</h2></div>
+  <div class="faq rv">
+   <details><summary>Do I need to open ports on my router?</summary><p>No. The automatic connection crosses the router by itself. Only the strictest networks need a guided rule or a VPN such as Tailscale, and the app walks you through it.<sup class="fn"><a href="#fn2">2</a></sup></p></details>
+   <details><summary>Do I need an account?</summary><p>MAControl has no account or password of its own. Away from home it uses your iCloud, where your Mac’s address is stored encrypted end to end.<sup class="fn"><a href="#fn8">8</a></sup></p></details>
+   <details><summary>Does it work on cellular?</summary><p>Yes, even on 5G. Quality adapts to the bandwidth available while you work.<sup class="fn"><a href="#fn6">6</a></sup></p></details>
+   <details><summary>What if my Mac is asleep or locked?</summary><p>A sleeping Mac can’t be reached from outside, so leave it on, even with the display off. If it’s locked, you can unlock it from the app: the password travels encrypted and is never stored.</p></details>
+   <details><summary>Which languages does it speak?</summary><p>English, Italian, German, Spanish, French, Japanese, Korean, Brazilian Portuguese, Russian and Simplified Chinese. MAControl uses your device’s language automatically.</p></details>
+   <details><summary>What does “lifetime support” mean?</summary><p>You pay once for the client. There are no in-app purchases and no ads: the app is yours forever, and future updates and support are included, with no subscription.<sup class="fn"><a href="#fn7">7</a></sup></p></details>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <img src="assets/icon-256.png" alt="MAControl icon" class="rv">
+ <h2 class="display rv">Your Mac, <span class="grad">everywhere.</span></h2>
+ <p class="lead center rv" style="margin-top:18px">Launch price <b style="color:var(--text)">€9</b> <s style="color:var(--dim)">€15</s>. Pay once: no in-app purchases, no ads, future updates included.<sup class="fn"><a href="#fn7">7</a></sup></p>
+ <div class="cta rv">
+  <a class="btn btn-primary" href="#" data-appstore>Get it on the App Store</a>
+  <a class="btn btn-ghost" href="downloads/MAControl.dmg" download>Download for Mac<span class="ver">v1.0.0</span></a>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap notes"><ol><li id="fn1"><b>1.</b><span>Frame rate and image quality vary with the network: Wi‑Fi standard and congestion, distance from the router, and the Mac’s model and workload. When the connection weakens, MAControl lowers detail to keep motion fluid.</span></li><li id="fn2"><b>2.</b><span>The automatic connection works on most home networks. Some networks, such as those behind carrier-grade NAT or with strict firewalls (offices, hotels, public Wi‑Fi), may require a port rule on the router or a VPN.</span></li><li id="fn3"><b>3.</b><span>iPhone and Apple Vision Pro must be on the same Wi‑Fi network. Hand gestures need hand-tracking permission and, while they are on, the windows of other apps are hidden.</span></li><li id="fn4"><b>4.</b><span>On your home network, frame rate and bandwidth depend on your router, the Wi‑Fi standard in use and your devices’ distance from the router.</span></li><li id="fn5"><b>5.</b><span>Over VPN, performance depends on the network you set up yourself (for example Tailscale, or the VPN built into your router) or on the service you subscribe to. MAControl does not include a VPN.</span></li><li id="fn6"><b>6.</b><span>Away from home, quality depends on the upload speed of the Mac’s internet connection and on the coverage and speed of the network you’re using. 5G availability depends on your carrier and plan.</span></li><li id="fn7"><b>7.</b><span>Launch price until 1 December 2026, then €15. Prices include VAT and may vary by country. Updates and support are provided at no extra cost for the life of the product.</span></li><li id="fn8"><b>8.</b><span>Access away from home requires the Mac to be on, awake and connected to the internet, and your devices to be signed in to iCloud with the same Apple Account.</span></li></ol></div>
+ <div class="wrap legal"><span>© 2026 MAControl</span><a href="privacy.html">Privacy Policy</a><a href="support.html">Support</a><span>iPhone, iPad, Mac, Apple Vision Pro and App Store are trademarks of Apple Inc.</span><span class="maker"><a href="https://immersivecrafting.com" rel="me">Immersive Crafting (Roberta Dileo)</a><a href="https://www.instagram.com/immersivecrafting" rel="me">Instagram</a></span></div>
+</footer>
+
+<div class="buybar" id="buybar"><div><b>€9</b><s>€15</s><small>Launch offer · lifetime support</small></div><a class="btn btn-primary btn-sm" href="#pricing">Get MAControl</a></div>
+
+<script>
+(function(){
+  var APP_STORE_URL = "#pricing"; // TODO: link App Store definitivo
+  var LANG = "en", BASE = "", PATHS = {"en": "index.html", "it": "it/index.html", "de": "de/index.html", "es": "es/index.html", "fr": "fr/index.html", "pt-BR": "pt-br/index.html", "ja": "ja/index.html", "ko": "ko/index.html", "ru": "ru/index.html", "zh-Hans": "zh-hans/index.html"};
+  document.querySelectorAll("[data-appstore]").forEach(function(a){a.href=APP_STORE_URL});
+  function remember(l){try{localStorage.setItem("lang",l)}catch(e){}}
+  var sel=document.getElementById("langsel");
+  sel.addEventListener("change",function(){remember(sel.value);location.href=BASE+PATHS[sel.value]});
+  document.querySelectorAll("[data-lang]").forEach(function(a){a.addEventListener("click",function(){remember(a.getAttribute("data-lang"))})});
+  // Prima visita sulla pagina inglese: propone la lingua del dispositivo, una volta sola.
+  if(LANG==="en"){
+    var saved=null;try{saved=localStorage.getItem("lang")}catch(e){}
+    if(!saved){
+      var prefs=(navigator.languages||[navigator.language||""]);
+      for(var i=0;i<prefs.length;i++){
+        var p=(prefs[i]||"").toLowerCase(), m=null;
+        if(p.indexOf("zh")===0) m="zh-Hans"; else if(p.indexOf("pt")===0) m="pt-BR";
+        else { var s=p.slice(0,2); for(var k in PATHS){ if(k.toLowerCase()===s) m=k } }
+        if(m){ remember(m); if(m!=="en") location.replace(BASE+PATHS[m]+location.hash); break }
+      }
+    }
+  }
+  var nav=document.getElementById("nav"), bar=document.getElementById("buybar"), pricing=document.getElementById("pricing");
+  function onScroll(){
+    var y=window.scrollY; nav.classList.toggle("solid",y>10);
+    var r=pricing.getBoundingClientRect(), inPricing=r.top<window.innerHeight&&r.bottom>0;
+    bar.classList.toggle("on",y>window.innerHeight*.8&&!inPricing);
+  }
+  window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.08});
+  document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>

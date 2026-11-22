@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>隐私政策 — MAControl</title>
+<meta name="description" content="MAControl 隐私政策：无需账户，没有跟踪，没有开发者服务器。">
+<meta name="theme-color" content="#05070F">
+<link rel="alternate" hreflang="en" href="https://immersivecrafting.com/macontrol/privacy.html">
+<link rel="alternate" hreflang="it" href="https://immersivecrafting.com/macontrol/it/privacy.html">
+<link rel="alternate" hreflang="de" href="https://immersivecrafting.com/macontrol/de/privacy.html">
+<link rel="alternate" hreflang="es" href="https://immersivecrafting.com/macontrol/es/privacy.html">
+<link rel="alternate" hreflang="fr" href="https://immersivecrafting.com/macontrol/fr/privacy.html">
+<link rel="alternate" hreflang="pt-BR" href="https://immersivecrafting.com/macontrol/pt-br/privacy.html">
+<link rel="alternate" hreflang="ja" href="https://immersivecrafting.com/macontrol/ja/privacy.html">
+<link rel="alternate" hreflang="ko" href="https://immersivecrafting.com/macontrol/ko/privacy.html">
+<link rel="alternate" hreflang="ru" href="https://immersivecrafting.com/macontrol/ru/privacy.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://immersivecrafting.com/macontrol/zh-hans/privacy.html">
+<link rel="alternate" hreflang="x-default" href="https://immersivecrafting.com/macontrol/privacy.html">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/icon-256.png">
+<style>
+:root{
+  --bg:#05070F; --bg2:#0A0E1C; --card:rgba(255,255,255,.045); --line:rgba(255,255,255,.09);
+  --text:#F4F6FB; --mute:#9AA3B5; --dim:#6B7487;
+  --blue:#2F6BFF; --cyan:#6BD6FF; --sun:#FF8C47;
+  --grad:linear-gradient(100deg,#6BD6FF 0%,#2F6BFF 45%,#9B7BFF 75%,#FF8C47 100%);
+  --r:28px; --pad:clamp(20px,5vw,56px); --max:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 17px/1.55 -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.display{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;font-weight:700;letter-spacing:-.035em;line-height:1.02}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.lead{font-size:clamp(18px,2.1vw,22px);line-height:1.45;color:var(--mute);max-width:640px}
+section{position:relative}
+
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top);transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+.nav.solid{background:rgba(5,7,15,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-.02em;font-size:18px}
+.brand img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;gap:28px;font-size:14px;color:var(--mute)}
+.nav-links a:hover{color:var(--text)}
+@media(max-width:820px){.nav-links{display:none}}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 26px;border-radius:999px;font-weight:600;font-size:16px;transition:transform .2s,box-shadow .2s,background .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:#fff;color:#05070F}
+.btn-primary:hover{box-shadow:0 10px 40px -8px rgba(107,214,255,.55)}
+.btn-ghost{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
+.btn-ghost:hover{background:rgba(255,255,255,.13)}
+.btn-sm{height:38px;padding:0 16px;font-size:14px}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* hero */
+.hero{padding:calc(120px + env(safe-area-inset-top)) 0 40px;text-align:center;overflow:hidden}
+.hero:before{content:"";position:absolute;inset:-20% -10% auto;height:900px;background:radial-gradient(600px 380px at 30% 30%,rgba(47,107,255,.35),transparent 70%),radial-gradient(520px 340px at 75% 20%,rgba(255,140,71,.22),transparent 70%);pointer-events:none;z-index:-1}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 8px 7px 16px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid var(--line);font-size:14px;color:var(--mute)}
+.pill b{color:var(--text);font-weight:600}
+.pill span.tag{background:var(--sun);color:#1a0d04;font-weight:700;font-size:12px;padding:3px 10px;border-radius:999px}
+.hero .wrap>*,.stage{animation:up 1s cubic-bezier(.2,.8,.2,1) both}.hero .wrap>*:nth-child(2){animation-delay:.06s}.hero .wrap>*:nth-child(3){animation-delay:.12s}.hero .wrap>*:nth-child(4){animation-delay:.18s}.stage{animation-delay:.26s}
+@keyframes up{from{opacity:0;transform:translateY(24px)}}
+.hero h1{font-size:clamp(48px,10.5vw,132px);margin:26px auto 0;max-width:12ch}
+.hero .lead{margin:24px auto 0;text-align:center}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.cta-note{margin-top:14px;font-size:13px;color:var(--dim)}
+.stage{position:relative;margin:64px auto 0;max-width:1100px;padding:0 var(--pad)}
+.stage .frame{border-radius:clamp(16px,2.4vw,30px);overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 40px 120px -30px rgba(47,107,255,.55),0 30px 60px -30px rgba(0,0,0,.9)}
+.stage .phone{position:absolute;right:calc(var(--pad) - 18px);bottom:-60px;width:clamp(120px,19%,210px)}
+.phone{border-radius:clamp(22px,3.2vw,40px);padding:clamp(4px,.55vw,7px);background:linear-gradient(150deg,#4a505c,#0d0f14 45%,#2c3038);box-shadow:0 30px 60px -20px rgba(0,0,0,.85),inset 0 0 0 1px rgba(255,255,255,.15)}
+.phone img{border-radius:clamp(18px,2.7vw,34px)}
+.devices{display:flex;gap:clamp(18px,4vw,48px);justify-content:center;flex-wrap:wrap;margin-top:110px;color:var(--dim);font-weight:600;font-size:15px;letter-spacing:.02em}
+.devices span{display:flex;align-items:center;gap:8px}
+.devices i{width:6px;height:6px;border-radius:50%;background:var(--cyan);display:inline-block}
+
+/* blocks */
+.block{padding:clamp(90px,12vw,150px) 0 0}
+.head{max-width:760px}
+.head h2{font-size:clamp(38px,6.4vw,76px);margin-top:14px}
+.head .lead{margin-top:18px}
+.center{text-align:center;margin-left:auto;margin-right:auto}
+.center .lead{margin-left:auto;margin-right:auto}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:52px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,3vw,34px);overflow:hidden;position:relative;min-height:240px}
+.card h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.card p{color:var(--mute);margin-top:10px;font-size:16px}
+.c4{grid-column:span 4}.c3{grid-column:span 3}.c2{grid-column:span 2}.c6{grid-column:span 6}
+.big{font-size:clamp(72px,11vw,132px);font-weight:800;letter-spacing:-.05em;line-height:.9}
+.unit{font-size:15px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-top:10px}
+.glow-blue{background:radial-gradient(420px 260px at 85% 110%,rgba(47,107,255,.45),transparent 70%),var(--card)}
+.glow-sun{background:radial-gradient(380px 240px at 10% 120%,rgba(255,140,71,.35),transparent 70%),var(--card)}
+.card .art{margin:26px -34px -34px;}
+.card .art img{width:100%}
+.lock{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(140deg,#6BD6FF,#2F6BFF);margin-bottom:22px}
+.lock svg{width:28px;height:28px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.chips span{font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px;background:rgba(255,140,71,.12);color:#FFB487}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--cyan);margin-top:18px;line-height:1.7}
+/* Peer to Peer: testo a sinistra, iPhone e Mac collegati senza router a destra */
+.p2p{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,4vw,56px);align-items:center;min-height:0}
+.p2p h3{margin-top:12px}
+.p2p .viz svg{width:100%;height:auto;max-height:210px;display:block}
+.p2p .wave{stroke-dasharray:6 10;animation:p2pflow 1.6s linear infinite}
+.p2p .w2{animation-duration:2s}.p2p .w3{animation-duration:2.4s}
+@keyframes p2pflow{to{stroke-dashoffset:-32}}
+@media(prefers-reduced-motion:reduce){.p2p .wave{animation:none}}
+.chips.cy span{background:rgba(107,214,255,.12);color:var(--cyan)}
+@media(max-width:900px){.c4,.c3,.c2{grid-column:span 6}.bento{gap:14px}}
+@media(max-width:900px){.p2p{grid-template-columns:1fr}.p2p .viz{max-width:360px}}
+@media(min-width:620px) and (max-width:900px){.c2{grid-column:span 3}}
+
+/* showcase */
+.show{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;margin-top:56px}
+.show.rev{grid-template-columns:1fr 1.25fr}
+.show.rev .media{order:2}
+.media .shot{border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 90px -40px rgba(0,0,0,.9)}
+.list{list-style:none;margin-top:26px;display:grid;gap:18px}
+.list li{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
+.list li b{display:block;font-size:17px}
+.list li span{color:var(--mute);font-size:15.5px}
+.dot{width:28px;height:28px;border-radius:9px;background:rgba(107,214,255,.12);display:grid;place-items:center;color:var(--cyan);font-weight:800;font-size:13px}
+.duo-wrap{position:relative}
+.duo-wrap .shot{transform:perspective(1400px) rotateX(18deg);transform-origin:50% 100%}
+.duo-wrap:after{content:"";position:absolute;left:8%;right:8%;bottom:-30px;height:60px;background:radial-gradient(closest-side,rgba(47,107,255,.5),transparent);filter:blur(20px);z-index:-1}
+@media(max-width:900px){.show,.show.rev{grid-template-columns:1fr}.show.rev .media{order:0}}
+
+.minis{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+.minis .shot{border-radius:18px}
+
+/* speed strip */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px}
+.stat{border-top:1px solid var(--line);padding-top:22px}
+.stat .big{font-size:clamp(64px,9vw,112px)}
+.stat p{color:var(--mute);margin-top:8px;font-size:15.5px}
+@media(max-width:760px){.stats{grid-template-columns:1fr}}
+
+/* pricing */
+.pricing{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:52px;align-items:stretch}
+.plan{border-radius:32px;padding:clamp(28px,4vw,44px);border:1px solid var(--line);background:var(--card);display:flex;flex-direction:column}
+.plan.hot{background:radial-gradient(520px 320px at 100% 0%,rgba(255,140,71,.28),transparent 70%),radial-gradient(520px 320px at 0% 100%,rgba(47,107,255,.35),transparent 70%),#0B1024;border-color:rgba(107,214,255,.35)}
+.plan .tag{align-self:flex-start;background:var(--sun);color:#1a0d04;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:18px}
+.plan h3{font-size:24px;letter-spacing:-.02em}
+.plan .for{color:var(--mute);margin-top:4px}
+.price{display:flex;align-items:baseline;gap:14px;margin-top:26px}
+.price .now{font-size:clamp(64px,8vw,88px);font-weight:800;letter-spacing:-.05em;line-height:1}
+.price .was{font-size:24px;color:var(--dim);text-decoration:line-through;font-weight:600}
+.price small{color:var(--mute);font-size:15px}
+.plan ul{list-style:none;margin:26px 0 30px;display:grid;gap:12px;color:#D7DCE6;font-size:16px}
+.plan li{display:flex;gap:12px;align-items:flex-start}
+.plan li:before{content:"";flex:none;width:18px;height:18px;margin-top:3px;border-radius:50%;background:rgba(107,214,255,.16) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M5 9.2l2.6 2.6L13 6.4' fill='none' stroke='%236BD6FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat}
+.plan .btn{margin-top:auto;width:100%}
+.plan .fine{font-size:13px;color:var(--dim);margin-top:12px;text-align:center}
+@media(max-width:820px){.pricing{grid-template-columns:1fr}.plan.hot{order:-1}}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:52px;counter-reset:s}
+.step{border-radius:var(--r);border:1px solid var(--line);padding:30px;background:var(--card)}
+.step:before{counter-increment:s;content:counter(s);display:block;font-size:56px;font-weight:800;letter-spacing:-.04em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:18px}
+.step h3{font-size:20px;letter-spacing:-.01em}
+.step p{color:var(--mute);margin-top:8px;font-size:15.5px}
+@media(max-width:820px){.steps{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:820px;margin:44px auto 0}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;padding:24px 40px 24px 0;font-size:19px;font-weight:600;position:relative}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;border-right:2px solid var(--mute);border-bottom:2px solid var(--mute);transform:translateY(-70%) rotate(45deg);transition:transform .25s}
+details[open] summary:after{transform:translateY(-30%) rotate(-135deg)}
+details p{color:var(--mute);padding:0 0 24px;max-width:700px}
+
+/* final */
+.final{margin:clamp(100px,12vw,160px) 0 0;padding:clamp(70px,10vw,120px) var(--pad);text-align:center;border-top:1px solid var(--line);background:radial-gradient(700px 360px at 50% 0%,rgba(47,107,255,.32),transparent 70%)}
+.final img{width:88px;height:88px;border-radius:22px;margin:0 auto 28px;box-shadow:0 20px 60px -10px rgba(47,107,255,.6)}
+.final h2{font-size:clamp(40px,7vw,84px)}
+footer{padding:40px 0 calc(40px + env(safe-area-inset-bottom));border-top:1px solid var(--line);color:var(--dim);font-size:13px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* mobile sticky buy bar */
+.buybar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;display:none;align-items:center;justify-content:space-between;gap:12px;padding:10px 10px 10px 18px;border-radius:20px;background:rgba(14,19,36,.82);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);transform:translateY(140%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.buybar.on{transform:none}
+.buybar b{font-size:15px}.buybar s{color:var(--dim);margin-left:6px;font-size:13px}
+.buybar small{display:block;color:var(--mute);font-size:12px}
+@media(max-width:720px){.buybar{display:flex}.stage .phone{width:92px;bottom:-34px;right:calc(var(--pad) - 8px)}.cta .btn{width:100%;max-width:340px}.devices{margin-top:80px;font-size:14px;gap:14px 20px}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.hero .wrap>*,.stage{animation:none}.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+
+/* lingua */
+.navr{display:flex;align-items:center;gap:10px}
+.langsel{position:relative;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;color:var(--text)}
+.langsel:hover{background:rgba(255,255,255,.14)}
+.langsel svg{width:18px;height:18px}
+.langsel select{position:absolute;inset:0;opacity:0;cursor:pointer;font-size:16px;width:100%;height:100%}
+.langs{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.langs a,.langs span{font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;background:rgba(107,214,255,.1);color:#BDEBFF;border:1px solid transparent}
+.langs .on{background:#fff;color:#05070F}
+.langs a:hover{border-color:rgba(107,214,255,.5)}
+.card.lang{display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;min-height:0;background:radial-gradient(520px 260px at 0% 0%,rgba(107,214,255,.22),transparent 70%),radial-gradient(420px 240px at 100% 100%,rgba(155,123,255,.25),transparent 70%),var(--card)}
+.card.lang .big{font-size:clamp(96px,14vw,168px)}
+@media(max-width:700px){.card.lang{grid-template-columns:1fr}}
+.footlangs{display:flex;flex-wrap:wrap;gap:6px 16px}
+.footlangs a:hover{color:var(--text)}
+.footlangs .on{color:var(--text)}
+/* CJK: niente spaziatura negativa, a capo per frasi */
+:lang(ja) .display,:lang(ko) .display,:lang(zh-Hans) .display{letter-spacing:-.01em;line-height:1.15}
+:lang(ja) .big,:lang(ko) .big,:lang(zh-Hans) .big{letter-spacing:-.04em}
+:lang(ja),:lang(zh-Hans){word-break:auto-phrase;line-break:strict}
+:lang(ko){word-break:keep-all}
+:lang(ja) body{font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
+:lang(ko) body{font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",sans-serif}
+:lang(zh-Hans) body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans SC",sans-serif}
+:lang(ja) .eyebrow,:lang(ko) .eyebrow,:lang(zh-Hans) .eyebrow{letter-spacing:.06em}
+/* telefoni: nella barra in alto bastano marchio e lingua (l'acquisto è nell'apertura e nella barra in basso) */
+@media(max-width:560px){.navr .btn{display:none}}
+.buybar>div{min-width:0}
+.buybar small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.buybar .btn{flex:none}
+/* parole lunghe (es. «Бесплатно») non devono allargare le schede dei prezzi */
+.plan{min-width:0}
+.price{flex-wrap:wrap}
+.price .now{font-size:clamp(48px,13vw,88px)}
+/* Note a piè di pagina, stile Apple */
+.fn{font-size:.58em;line-height:0;vertical-align:super;margin-left:2px;font-weight:500;letter-spacing:0}
+.fn a{color:inherit;opacity:.65;text-decoration:none}
+.fn a:hover{opacity:1}
+.big .fn,.unit .fn{font-size:12px}
+.price .fn{align-self:flex-start;font-size:13px;margin-top:6px}
+footer .notes{display:block;padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.notes ol{list-style:none;margin:0;padding:0;display:grid;gap:9px;font-size:12px;line-height:1.5;color:#86868b;max-width:980px}
+.notes li{display:flex;gap:8px}
+.notes li b{font-weight:400;min-width:1em;font-variant-numeric:tabular-nums}
+.notes li:target{color:var(--text)}
+[id^="fn"]{scroll-margin-top:90px}
+footer .legal a{color:var(--dim);text-decoration:none}
+footer .legal a:hover{color:var(--text);text-decoration:underline}
+footer .maker{display:flex;gap:16px}
+.btn .ver{font-size:11.5px;font-weight:500;opacity:.55;margin-left:-2px;font-variant-numeric:tabular-nums;letter-spacing:.02em}
+/* Pagina privacy */
+.doc{max-width:760px;margin:0 auto;padding:clamp(120px,14vw,170px) var(--pad) 80px}
+.doc h1{font-size:clamp(36px,6vw,56px);letter-spacing:-.035em;line-height:1.05}
+.doc .upd{color:var(--dim);font-size:14px;margin-top:14px}
+.doc .intro{font-size:clamp(18px,2.2vw,21px);line-height:1.55;color:var(--text);margin-top:28px}
+.doc h2{font-size:22px;letter-spacing:-.015em;margin-top:44px}
+.doc p,.doc li{color:var(--mute);font-size:16px;line-height:1.65}
+.doc p{margin-top:12px}
+.doc ul{margin:12px 0 0;padding-left:1.2em;display:grid;gap:10px}
+.doc b{color:var(--text);font-weight:600}
+.doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:rgba(255,255,255,.07);padding:2px 6px;border-radius:6px;word-break:break-all}
+.doc a{color:var(--cyan)}
+/* Vision Pro: iPhone come trackpad e tastiera */
+.padcard{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(24px,4vw,56px);align-items:center;min-height:0}
+.padcard h3{margin-top:12px}
+.padshot img{display:block;width:100%;height:auto;border-radius:clamp(14px,2.4vw,26px);border:1px solid rgba(255,255,255,.16);box-shadow:0 30px 70px -30px rgba(0,0,0,.9)}
+@media(max-width:900px){.padcard{grid-template-columns:1fr}}
+#vision .c3{min-height:0}
+/* Casi d'uso su iPhone: le tre modalità */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:52px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:clamp(24px,3vw,36px);display:grid;gap:clamp(20px,3vw,40px);align-items:center}
+.case.wide{grid-column:span 2;grid-template-columns:1fr 1.7fr;background:radial-gradient(520px 300px at 90% 110%,rgba(47,107,255,.38),transparent 70%),var(--card)}
+.case.tall{grid-template-columns:1fr minmax(120px,210px)}
+.case h3{font-size:clamp(24px,2.6vw,32px);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+.case p{color:var(--mute);margin-top:10px;font-size:16px}
+.case .num{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700;background:rgba(107,214,255,.14);color:var(--cyan);margin-bottom:14px}
+.dev{background:#000;border:5px solid #20232e;overflow:hidden;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 30px 70px -30px rgba(0,0,0,.9)}
+.dev img{display:block;width:100%;height:auto}
+.dev.land{border-radius:7.4%/16%}.dev.port{border-radius:16%/7.4%}
+@media(max-width:900px){.cases{grid-template-columns:1fr}.case.wide{grid-column:auto;grid-template-columns:1fr}.case.tall{grid-template-columns:1fr minmax(110px,170px)}}
+
+</style>
+</head>
+<body>
+
+<header class="nav solid" id="nav">
+ <div class="wrap">
+  <a class="brand" href="index.html"><img src="../assets/icon-256.png" alt="">MAControl</a>
+  <div class="navr">
+   <label class="langsel" title="语言"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg><select id="langsel" aria-label="语言"><option value="en">English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option><option value="pt-BR">Português (Brasil)</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="ru">Русский</option><option value="zh-Hans" selected>简体中文</option></select></label>
+   <a class="btn btn-ghost btn-sm" href="index.html">返回 MAControl</a>
+  </div>
+ </div>
+</header>
+
+<main class="doc">
+ <h1>隐私政策</h1>
+ <p class="upd">最后更新：2026年11月22日</p>
+ <p class="intro">MAControl 的设计目标是让你 Mac 上发生的一切只留在 Mac 和你的设备之间。没有账户，没有开发者服务器，没有广告，没有分析，也没有跟踪。我们不收集、不查看、也不出售你的个人数据。</p>
+ <h2>关于我们</h2>
+ <p>MAControl 由 <a href="https://immersivecrafting.com">Immersive Crafting (Roberta Dileo)</a>, Via Giorgio Perlasca 3, 47924 Rimini (RN) (tel. <a href="tel:+393397931770">+39 339 793 1770</a>) 开发和发布。如对本政策或你的数据有任何疑问，请写信至 <a href="mailto:immersivecrafting@icloud.com">immersivecrafting@icloud.com</a>。</p>
+ <h2>留在你设备上的内容</h2>
+ <p>屏幕画面、按键、点按和手势在你的设备与 Mac 之间直接传输，采用端到端加密，并且从不被记录。我们在中间没有任何可以接收这些内容的服务器。</p><ul><li><b>身份密钥</b>在每台设备上生成，并封存在该设备的 Secure Enclave 中，从不离开设备。</li><li><b>Mac 的解锁密码</b>在你于 App 中输入时会加密发送，并仅用于一次解锁屏幕。它从不会被保存，无论是在设备上还是在 Mac 上。</li><li><b>在 Mac 上</b>，MAControl 会保存已配对设备列表、访问日志、权限日志，以及你的设备发送给它的诊断信息。这些文件存放在 <code>~/Library/Application Support/MaControl</code> 中，你可以随时删除。</li></ul>
+ <h2>经过你的 iCloud 的内容</h2>
+ <p>部分功能会在你的 Apple 账户下使用你自己的 iCloud。这些数据存储在你的私有 iCloud 数据库和你的 iCloud 钥匙串中，受 Apple 隐私政策约束，我们无法访问。</p><ul><li><b>外出时访问。</b>开启后，Mac 会将其网络地址保存在你的 iCloud 中，以便你的设备找到它。来自你设备的连接请求也经由同一途径传递。两者均以端到端加密方式存储。</li><li><b>安全警报。</b>如果有人试图在未经许可的情况下连接，Mac 会记录日期、事件类型、Mac 名称、描述以及来源 IP 地址，以便你的设备向你显示警报。</li><li><b>你的 Mac 列表</b>通过 iCloud 钥匙串在 iPhone 和 iPad 之间同步，其中包括名称、地址和密钥指纹，以及你保存的 VNC 密码。</li></ul><p>你可以通过关闭“外出时访问”或在设备的 iCloud 设置中删除这些数据。</p>
+ <h2>第三方网络服务</h2>
+ <ul><li><b>地址发现（STUN）。</b>为了穿过你的路由器建立连接，App 会向 Cloudflare 和 Google 的公共 STUN 服务器发送一个简短请求，服务器会回复你的公网 IP 地址和端口。与互联网上的任何服务器一样，它们会依照各自的隐私政策看到该地址。不会发送任何内容，也不会发送你的任何标识符。</li><li><b>你的路由器。</b>如果你的路由器支持，Mac 会请求它自动打开一个端口（UPnP 或 NAT-PMP）。这些请求只在你的本地网络内进行。</li><li><b>VPN。</b>如果你选择通过 Tailscale 等 VPN 连接，相关流量由你选择的服务提供商依照其自身条款处理。</li></ul>
+ <h2>权限</h2>
+ <ul><li><b>在 Mac 上：</b>录屏，用于将画面发送到你的设备；辅助功能，用于执行你发送的点按和按键。</li><li><b>在 iPhone、iPad 和 Apple Vision Pro 上：</b>本地网络，用于在家中找到你的 Mac；蓝牙，用于在 iControl 中将 iPhone 配对为触控板。</li></ul><p>每项权限仅用于对应用途，你可以随时在“设置”中撤销。</p>
+ <h2>用作触控板的 iPhone、手势、通知和更新</h2>
+ <ul><li><b>用作触控板的 iPhone。</b> 打开 MAControl 后，iPhone 会在本地网络中宣告自己，以便 Apple Vision Pro 找到它。宣告内容包含设备名称，以及由你的 iCloud 账户以不可逆方式生成的一个短代码，仅用于识别你自己的设备；同一网络中的其他设备可以看到它。蓝牙仅用于检测你靠近的设备。任何内容都不会离开你的本地网络。</li><li><b>Apple Vision Pro 上的手势。</b> 手和头部的位置在设备上读取，用来识别轻扫、捏合等手势。这些数据不会被记录、存储或发送：只有由此产生的命令（例如“下一个桌面”）会加密发送到你的 Mac。</li><li><b>通知。</b> 安全警报和连接请求通过 Apple 推送通知服务，经由你的 iCloud 送达你的设备。Apple 依据其自身的隐私政策投递；通知不包含屏幕内容。</li><li><b>Mac App 的更新。</b> 从本网站下载的 Mac App 会不时向本站请求一个包含最新版本号的小文件。与任何请求一样，你的 IP 地址会到达我们的托管服务商，并可能出现在技术日志中；不会发送任何可识别你的标识符。</li></ul>
+ <h2>购买与下载</h2>
+ <p>客户端在 App Store 上销售。付款由 Apple 处理，Apple 只向我们提供汇总的销售报告。我们从不会收到你的姓名、电子邮件地址或付款信息。Mac App 直接从本网站下载，无需注册。</p>
+ <h2>本网站</h2>
+ <p>本网站不使用 Cookie、分析工具或第三方跟踪器。它只会在浏览器的本地存储中记住你选择的语言，你可以随时清除。与任何网站一样，我们的托管服务提供商可能会出于安全和运行目的保留技术日志，例如 IP 地址和请求时间。</p>
+ <h2>你的权利</h2>
+ <p>由于我们不在自己的服务器上保存你的个人数据，你可以直接掌控这些数据：在你的设备上、在 Mac 上以及在你的 iCloud 中。根据 GDPR 及类似法律，你有权访问、更正和删除你的数据，并有权反对对其进行处理。如有任何请求，请写信至 <a href="mailto:immersivecrafting@icloud.com">immersivecrafting@icloud.com</a>。你也可以向数据保护机构投诉；在意大利，该机构是 Garante per la protezione dei dati personali（意大利个人数据保护机构）。</p><p>我们自己可能处理的唯一数据是本网站的技术日志，保留这些日志的依据是我们维护网站安全的正当利益。</p>
+ <h2>儿童</h2>
+ <p>MAControl 并非面向儿童，也不会在知情的情况下收集任何人的数据，无论其年龄。</p>
+ <h2>变更</h2>
+ <p>如果本政策发生变更，我们会在此页面发布新版本并注明新的日期。</p>
+</main>
+
+<footer><div class="wrap legal"><span>© 2026 MAControl</span><a href="privacy.html" aria-current="page">隐私政策</a><a href="support.html">支持</a><span>iPhone、iPad、Mac、Apple Vision Pro 和 App Store 是 Apple Inc. 的商标。</span><span class="maker"><a href="https://immersivecrafting.com" rel="me">Immersive Crafting (Roberta Dileo)</a><a href="https://www.instagram.com/immersivecrafting" rel="me">Instagram</a></span></div></footer>
+
+<script>
+(function(){
+  var BASE = "../", PATHS = {"en": "privacy.html", "it": "it/privacy.html", "de": "de/privacy.html", "es": "es/privacy.html", "fr": "fr/privacy.html", "pt-BR": "pt-br/privacy.html", "ja": "ja/privacy.html", "ko": "ko/privacy.html", "ru": "ru/privacy.html", "zh-Hans": "zh-hans/privacy.html"};
+  var sel=document.getElementById("langsel");
+  sel.addEventListener("change",function(){try{localStorage.setItem("lang",sel.value)}catch(e){} location.href=BASE+PATHS[sel.value]});
+})();
+</script>
+</body>
+</html>
