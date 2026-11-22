@@ -3,12 +3,12 @@
   "bundleIdentifier": "it.macontrol.remote",
   "latest": {
     "version": "1.0.0",
-    "build": 52,
+    "build": 57,
     "date": "2026-11-22",
     "minimumSystemVersion": "26.0",
     "url": "../downloads/MAControl.dmg",
-    "sha256": "5aa73f684a8b1e4571171be425ef6d7843d1ae69cf4433384ac3bac278494c8c",
-    "size": 6190373,
+    "sha256": "b6b3a33f71f139bd4ae7059dd04d907df788851fa7f6f96e3b820551f6b7beba",
+    "size": 6209918,
     "notes": {
       "it": "Prima versione di MAControl per Mac: controllo remoto cifrato end-to-end da iPhone, iPad e Apple Vision Pro, in casa e da fuori casa.",
       "en": "First release of MAControl for Mac: end-to-end encrypted remote control from iPhone, iPad and Apple Vision Pro, at home and away.",
