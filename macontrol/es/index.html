@@ -281,6 +281,26 @@ footer .maker{display:flex;gap:16px}
 .dev.land{border-radius:7.4%/16%}.dev.port{border-radius:16%/7.4%}
 @media(max-width:900px){.cases{grid-template-columns:1fr}.case.wide{grid-column:auto;grid-template-columns:1fr}.case.tall{grid-template-columns:1fr minmax(110px,170px)}}
 
+/* miglioramento continuo e feedback */
+.fb{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;margin-top:52px;align-items:stretch}
+.fbcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fbcard{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);padding:24px;background:var(--card);transition:transform .2s,border-color .2s,background .2s}
+.fbcard:hover{transform:translateY(-3px);border-color:rgba(107,214,255,.4);background:rgba(107,214,255,.06)}
+.fbcard h3{font-size:19px;letter-spacing:-.01em}
+.fbcard p{color:var(--mute);margin-top:8px;font-size:15px;flex:1}
+.fbcard span{margin-top:16px;color:var(--cyan);font-weight:600;font-size:15px;word-break:break-word}
+.fbform{display:flex;flex-direction:column;gap:16px;min-height:0}
+.fbform label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--mute)}
+.fbform select,.fbform textarea{font:inherit;font-size:16px;font-weight:400;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:13px 14px;outline:none;width:100%}
+.fbform select:focus,.fbform textarea:focus{border-color:rgba(107,214,255,.6);box-shadow:0 0 0 3px rgba(107,214,255,.18)}
+.fbform select option{color:#111}
+.fbform textarea{resize:vertical;min-height:140px}
+.fbform .btn{align-self:flex-start}
+.fb-note{font-size:13px;color:var(--dim)}
+@media(max-width:900px){.fb{grid-template-columns:1fr}}
+@media(max-width:560px){.fbcards{grid-template-columns:1fr}.fbform .btn{align-self:stretch}}
+.steps.nonum .step:before{display:none}
+
 </style>
 </head>
 <body>
@@ -507,6 +527,38 @@ footer .maker{display:flex;gap:16px}
  </div>
 </section>
 
+<section class="block" id="improving">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Siempre mejorando</div><h2 class="display">Una herramienta que nunca deja de <span class="grad">mejorar.</span></h2><p class="lead">MAControl es una herramienta viva. La mejoramos con cada actualización y solo puede mejorar gracias a lo que nos cuentas: qué funciona, qué no, qué falta.</p></div>
+  <div class="steps nonum">
+   <div class="step rv"><h3>En constante evolución</h3><p>Nuevas funciones, conexiones más fluidas y retoques llegan con cada actualización, y están incluidos para siempre.</p></div>
+   <div class="step rv"><h3>Moldeada por ti</h3><p>Quien usa MAControl cada día nos muestra cosas que ninguna prueba puede revelar. Tus comentarios deciden qué corregimos y construimos después.</p></div>
+   <div class="step rv"><h3>Tu voz cuenta</h3><p>Cada mensaje lo lee la persona que construye MAControl, y respondemos en persona.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="feedback">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">Ayúdanos a mejorar</div><h2 class="display">Cuéntanos qué piensas.</h2><p class="lead">Un comentario, una función que te encantaría, un problema que encontraste o solo un saludo: escríbenos como prefieras.</p></div>
+  <div class="fb">
+   <div class="fbcards">
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20comentario"><h3>Comparte tu opinión</h3><p>¿Qué te gusta? ¿Qué te estorba? Incluso una sola línea ayuda.</p><span>Escríbenos →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20petici%C3%B3n%20de%20funci%C3%B3n"><h3>Pide una función</h3><p>Describe qué te gustaría que hiciera MAControl. Las mejores ideas nacen de cómo lo usas de verdad.</p><span>Escríbenos →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20informe%20de%20un%20problema"><h3>Informa de un problema</h3><p>Dinos tu dispositivo, la versión del sistema y qué pasó, y lo revisamos.</p><span>Escríbenos →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20hola"><h3>Envíanos un correo</h3><p>Sin formularios: escríbenos cuando quieras.</p><span>immersivecrafting@icloud.com →</span></a>
+   </div>
+   <form class="fbform card glow-blue rv" id="fbform" data-to="immersivecrafting@icloud.com" data-s1="MAControl: comentario" data-s2="MAControl: petición de función" data-s3="MAControl: informe de un problema" data-s4="MAControl: hola" data-dev="Dispositivo" data-from="Enviado desde el sitio de MAControl">
+    <label>¿De qué se trata?<select name="type"><option value="1">Comentario</option><option value="2">Petición de función</option><option value="3">Problema</option><option value="4">Otra cosa</option></select></label>
+    <label>Tu dispositivo (opcional)<select name="device"><option value="">Sin especificar</option><option>iPhone</option><option>iPad</option><option>iPhone Duo</option><option>Apple Vision Pro</option><option>Mac</option></select></label>
+    <label>Tu mensaje<textarea name="msg" rows="6" required placeholder="Escribe aquí…"></textarea></label>
+    <button class="btn btn-primary" type="submit">Enviar por correo</button>
+    <p class="fb-note">Se abre tu app de correo con el mensaje listo para enviar. El sitio no guarda nada.</p>
+   </form>
+  </div>
+ </div>
+</section>
+
 <section class="block" id="faq">
  <div class="wrap">
   <div class="head center rv"><h2 class="display">Q&amp;A</h2></div>
@@ -568,6 +620,14 @@ footer .maker{display:flex;gap:16px}
     bar.classList.toggle("on",y>window.innerHeight*.8&&!inPricing);
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  var fb=document.getElementById("fbform");
+  if(fb){fb.addEventListener("submit",function(e){
+    e.preventDefault();
+    var f=fb.elements, sub=fb.getAttribute("data-s"+f.type.value), dev=f.device.value, body=f.msg.value.trim();
+    if(dev) body+="\n\n"+fb.getAttribute("data-dev")+": "+dev;
+    body+="\n\n— "+fb.getAttribute("data-from")+" ("+LANG+")";
+    location.href="mailto:"+fb.getAttribute("data-to")+"?subject="+encodeURIComponent(sub)+"&body="+encodeURIComponent(body);
+  })}
   if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.08});
   document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});

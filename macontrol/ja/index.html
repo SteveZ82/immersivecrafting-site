@@ -281,6 +281,26 @@ footer .maker{display:flex;gap:16px}
 .dev.land{border-radius:7.4%/16%}.dev.port{border-radius:16%/7.4%}
 @media(max-width:900px){.cases{grid-template-columns:1fr}.case.wide{grid-column:auto;grid-template-columns:1fr}.case.tall{grid-template-columns:1fr minmax(110px,170px)}}
 
+/* miglioramento continuo e feedback */
+.fb{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;margin-top:52px;align-items:stretch}
+.fbcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fbcard{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);padding:24px;background:var(--card);transition:transform .2s,border-color .2s,background .2s}
+.fbcard:hover{transform:translateY(-3px);border-color:rgba(107,214,255,.4);background:rgba(107,214,255,.06)}
+.fbcard h3{font-size:19px;letter-spacing:-.01em}
+.fbcard p{color:var(--mute);margin-top:8px;font-size:15px;flex:1}
+.fbcard span{margin-top:16px;color:var(--cyan);font-weight:600;font-size:15px;word-break:break-word}
+.fbform{display:flex;flex-direction:column;gap:16px;min-height:0}
+.fbform label{display:flex;flex-direction:column;gap:8px;font-size:14px;font-weight:600;color:var(--mute)}
+.fbform select,.fbform textarea{font:inherit;font-size:16px;font-weight:400;color:var(--text);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:14px;padding:13px 14px;outline:none;width:100%}
+.fbform select:focus,.fbform textarea:focus{border-color:rgba(107,214,255,.6);box-shadow:0 0 0 3px rgba(107,214,255,.18)}
+.fbform select option{color:#111}
+.fbform textarea{resize:vertical;min-height:140px}
+.fbform .btn{align-self:flex-start}
+.fb-note{font-size:13px;color:var(--dim)}
+@media(max-width:900px){.fb{grid-template-columns:1fr}}
+@media(max-width:560px){.fbcards{grid-template-columns:1fr}.fbform .btn{align-self:stretch}}
+.steps.nonum .step:before{display:none}
+
 </style>
 </head>
 <body>
@@ -507,6 +527,38 @@ footer .maker{display:flex;gap:16px}
  </div>
 </section>
 
+<section class="block" id="improving">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">進化し続ける</div><h2 class="display">止まることなく、<span class="grad">良くなり続けるツール。</span></h2><p class="lead">MAControlは生きたツールです。アップデートのたびに改善していて、うまくいくこと、うまくいかないこと、足りないこと、皆さんの声があってこそ良くなります。</p></div>
+  <div class="steps nonum">
+   <div class="step rv"><h3>進化し続けます</h3><p>新機能、より滑らかな接続、細かな改良がアップデートのたびに届きます。しかもずっと追加料金なしです。</p></div>
+   <div class="step rv"><h3>皆さんが形づくる</h3><p>毎日MAControlを使う皆さんは、どんなテストでも分からないことを教えてくれます。次に何を直し、何を作るかは、皆さんのフィードバックで決まります。</p></div>
+   <div class="step rv"><h3>あなたの声が届きます</h3><p>すべてのメッセージを、MAControlを作っている本人が読み、直接お返事します。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="feedback">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">改善にご協力ください</div><h2 class="display">ご意見を聞かせてください。</h2><p class="lead">感想、欲しい機能、見つけた不具合、ひとことの挨拶でも。お好きな方法でご連絡ください。</p></div>
+  <div class="fb">
+   <div class="fbcards">
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%E3%81%94%E6%84%8F%E8%A6%8B"><h3>感想を送る</h3><p>気に入っている点は？ 使いにくい点は？ 一行だけでも助かります。</p><span>メッセージを送る →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%E6%A9%9F%E8%83%BD%E3%81%AE%E3%83%AA%E3%82%AF%E3%82%A8%E3%82%B9%E3%83%88"><h3>機能をリクエスト</h3><p>MAControlにしてほしいことを教えてください。最良のアイデアは、実際の使い方から生まれます。</p><span>メッセージを送る →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%E4%B8%8D%E5%85%B7%E5%90%88%E3%81%AE%E5%A0%B1%E5%91%8A"><h3>不具合を報告</h3><p>お使いのデバイス、システムのバージョン、起きたことを教えてください。調査します。</p><span>メッセージを送る →</span></a>
+    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%E3%81%93%E3%82%93%E3%81%AB%E3%81%A1%E3%81%AF"><h3>メールを送る</h3><p>フォームは不要です。いつでもメールでどうぞ。</p><span>immersivecrafting@icloud.com →</span></a>
+   </div>
+   <form class="fbform card glow-blue rv" id="fbform" data-to="immersivecrafting@icloud.com" data-s1="MAControl: ご意見" data-s2="MAControl: 機能のリクエスト" data-s3="MAControl: 不具合の報告" data-s4="MAControl: こんにちは" data-dev="デバイス" data-from="MAControlのウェブサイトから送信">
+    <label>内容<select name="type"><option value="1">ご意見</option><option value="2">機能のリクエスト</option><option value="3">不具合</option><option value="4">その他</option></select></label>
+    <label>お使いのデバイス（任意）<select name="device"><option value="">指定しない</option><option>iPhone</option><option>iPad</option><option>iPhone Duo</option><option>Apple Vision Pro</option><option>Mac</option></select></label>
+    <label>メッセージ<textarea name="msg" rows="6" required placeholder="ここに入力…"></textarea></label>
+    <button class="btn btn-primary" type="submit">メールで送信</button>
+    <p class="fb-note">メールアプリが開き、送信できる状態のメッセージが入ります。このサイトには何も保存されません。</p>
+   </form>
+  </div>
+ </div>
+</section>
+
 <section class="block" id="faq">
  <div class="wrap">
   <div class="head center rv"><h2 class="display">Q&amp;A</h2></div>
@@ -568,6 +620,14 @@ footer .maker{display:flex;gap:16px}
     bar.classList.toggle("on",y>window.innerHeight*.8&&!inPricing);
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  var fb=document.getElementById("fbform");
+  if(fb){fb.addEventListener("submit",function(e){
+    e.preventDefault();
+    var f=fb.elements, sub=fb.getAttribute("data-s"+f.type.value), dev=f.device.value, body=f.msg.value.trim();
+    if(dev) body+="\n\n"+fb.getAttribute("data-dev")+": "+dev;
+    body+="\n\n— "+fb.getAttribute("data-from")+" ("+LANG+")";
+    location.href="mailto:"+fb.getAttribute("data-to")+"?subject="+encodeURIComponent(sub)+"&body="+encodeURIComponent(body);
+  })}
   if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{rootMargin:"0px 0px -8% 0px",threshold:.08});
   document.querySelectorAll(".rv").forEach(function(e){io.observe(e)});
