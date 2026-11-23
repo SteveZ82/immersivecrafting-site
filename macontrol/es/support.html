@@ -278,7 +278,7 @@ footer .maker{display:flex;gap:16px}
 @media(max-width:900px){.cases{grid-template-columns:1fr}.case.wide{grid-column:auto;grid-template-columns:1fr}.case.tall{grid-template-columns:1fr minmax(110px,170px)}}
 
 /* miglioramento continuo e feedback */
-.fb{display:grid;grid-template-columns:1fr 1.1fr;gap:16px;margin-top:52px;align-items:stretch}
+.fb{max-width:820px;margin:52px auto 0}
 .fbcards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .fbcard{display:flex;flex-direction:column;border-radius:var(--r);border:1px solid var(--line);padding:24px;background:var(--card);transition:transform .2s,border-color .2s,background .2s}
 .fbcard:hover{transform:translateY(-3px);border-color:rgba(107,214,255,.4);background:rgba(107,214,255,.06)}
@@ -299,6 +299,17 @@ footer .maker{display:flex;gap:16px}
 .fbcheck{flex-direction:row!important;align-items:flex-start;gap:12px!important;font-weight:500!important;color:var(--text)!important;cursor:pointer}
 .fbcheck input{width:20px;height:20px;margin-top:2px;accent-color:#6BD6FF;flex:none;cursor:pointer}
 .fbform .btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
+
+.fbopts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fbopt{display:flex;gap:14px;text-align:left;font:inherit;color:var(--text);cursor:pointer;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.04);padding:16px;transition:border-color .2s,background .2s}
+.fbopt:hover{border-color:rgba(107,214,255,.4)}
+.fbopt.on{border-color:rgba(107,214,255,.8);background:rgba(107,214,255,.1);box-shadow:0 0 0 3px rgba(107,214,255,.14)}
+.fbopt b{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;background:rgba(107,214,255,.16);color:var(--cyan)}
+.fbopt.on b{background:var(--cyan);color:#06121c}
+.fbopt h3{font-size:16px;letter-spacing:-.01em;font-weight:600}
+.fbopt p{font-size:14px;color:var(--mute);margin-top:4px;font-weight:400}
+.fbaddr{display:block;margin-top:6px;font-size:13px;color:var(--cyan);word-break:break-all}
+@media(max-width:560px){.fbopts{grid-template-columns:1fr}}
 
 </style>
 </head>
