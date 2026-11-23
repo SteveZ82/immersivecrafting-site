@@ -300,6 +300,9 @@ footer .maker{display:flex;gap:16px}
 @media(max-width:900px){.fb{grid-template-columns:1fr}}
 @media(max-width:560px){.fbcards{grid-template-columns:1fr}.fbform .btn{align-self:stretch}}
 .steps.nonum .step:before{display:none}
+.fbcheck{flex-direction:row!important;align-items:flex-start;gap:12px!important;font-weight:500!important;color:var(--text)!important;cursor:pointer}
+.fbcheck input{width:20px;height:20px;margin-top:2px;accent-color:#6BD6FF;flex:none;cursor:pointer}
+.fbform .btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 
 </style>
 </head>
@@ -543,16 +546,17 @@ footer .maker{display:flex;gap:16px}
   <div class="head center rv"><div class="eyebrow">Help us improve</div><h2 class="display">Tell us what you think.</h2><p class="lead">Feedback, a feature you would love, a problem you found, or just a hello: write to us the way you prefer.</p></div>
   <div class="fb">
    <div class="fbcards">
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20feedback"><h3>Share your feedback</h3><p>What do you like? What gets in the way? Even a single line helps.</p><span>Write to us →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20feature%20request"><h3>Request a feature</h3><p>Describe what you would like MAControl to do. The best ideas come from how you really use it.</p><span>Write to us →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20problem%20report"><h3>Report a problem</h3><p>Tell us your device, its system version and what happened, and we will look into it.</p><span>Write to us →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="1"><h3>Share your feedback</h3><p>What do you like? What gets in the way? Even a single line helps.</p><span>Write to us →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="2"><h3>Request a feature</h3><p>Describe what you would like MAControl to do. The best ideas come from how you really use it.</p><span>Write to us →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="3"><h3>Report a problem</h3><p>Tell us your device, its system version and what happened, and we will look into it.</p><span>Write to us →</span></a>
     <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20hello"><h3>Just send an email</h3><p>No form needed: write to us whenever you like.</p><span>immersivecrafting@icloud.com →</span></a>
    </div>
    <form class="fbform card glow-blue rv" id="fbform" data-to="immersivecrafting@icloud.com" data-s1="MAControl: feedback" data-s2="MAControl: feature request" data-s3="MAControl: problem report" data-s4="MAControl: hello" data-dev="Device" data-from="Sent from the MAControl website">
     <label>What is it about?<select name="type"><option value="1">Feedback</option><option value="2">Feature request</option><option value="3">Problem</option><option value="4">Something else</option></select></label>
     <label>Your device (optional)<select name="device"><option value="">Not specified</option><option>iPhone</option><option>iPad</option><option>iPhone Duo</option><option>Apple Vision Pro</option><option>Mac</option></select></label>
     <label>Your message<textarea name="msg" rows="6" required placeholder="Write here…"></textarea></label>
-    <button class="btn btn-primary" type="submit">Send by email</button>
+    <label class="fbcheck"><input type="checkbox" name="ok" required> <span>I have MAControl installed on my device</span></label>
+    <button class="btn btn-primary" type="submit" disabled>Send by email</button>
     <p class="fb-note">This opens your mail app with the message ready to send. Nothing is stored on this site.</p>
    </form>
   </div>
@@ -621,11 +625,17 @@ footer .maker{display:flex;gap:16px}
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
   var fb=document.getElementById("fbform");
-  if(fb){fb.addEventListener("submit",function(e){
+  if(fb){
+    var ok=fb.elements.ok, go=fb.querySelector("button[type=submit]");
+    ok.addEventListener("change",function(){go.disabled=!ok.checked});
+    document.querySelectorAll(".fbcard[data-type]").forEach(function(a){a.addEventListener("click",function(){
+      fb.elements.type.value=a.getAttribute("data-type"); setTimeout(function(){fb.elements.msg.focus({preventScroll:true})},500)})});
+    fb.addEventListener("submit",function(e){
     e.preventDefault();
     var f=fb.elements, sub=fb.getAttribute("data-s"+f.type.value), dev=f.device.value, body=f.msg.value.trim();
     if(dev) body+="\n\n"+fb.getAttribute("data-dev")+": "+dev;
     body+="\n\n— "+fb.getAttribute("data-from")+" ("+LANG+")";
+    if(!ok.checked) return;
     location.href="mailto:"+fb.getAttribute("data-to")+"?subject="+encodeURIComponent(sub)+"&body="+encodeURIComponent(body);
   })}
   if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}

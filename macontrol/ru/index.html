@@ -300,6 +300,9 @@ footer .maker{display:flex;gap:16px}
 @media(max-width:900px){.fb{grid-template-columns:1fr}}
 @media(max-width:560px){.fbcards{grid-template-columns:1fr}.fbform .btn{align-self:stretch}}
 .steps.nonum .step:before{display:none}
+.fbcheck{flex-direction:row!important;align-items:flex-start;gap:12px!important;font-weight:500!important;color:var(--text)!important;cursor:pointer}
+.fbcheck input{width:20px;height:20px;margin-top:2px;accent-color:#6BD6FF;flex:none;cursor:pointer}
+.fbform .btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 
 </style>
 </head>
@@ -543,16 +546,17 @@ footer .maker{display:flex;gap:16px}
   <div class="head center rv"><div class="eyebrow">Помогите нам стать лучше</div><h2 class="display">Расскажите, что вы думаете.</h2><p class="lead">Отзыв, функция, о которой вы мечтаете, найденная проблема или просто привет: напишите нам так, как вам удобно.</p></div>
   <div class="fb">
    <div class="fbcards">
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%D0%BE%D1%82%D0%B7%D1%8B%D0%B2"><h3>Поделитесь отзывом</h3><p>Что вам нравится? Что мешает? Поможет даже одна строка.</p><span>Написать нам →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%D0%BF%D1%80%D0%B5%D0%B4%D0%BB%D0%BE%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5%20%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8"><h3>Предложите функцию</h3><p>Опишите, что вы хотите от MAControl. Лучшие идеи рождаются из реального использования.</p><span>Написать нам →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%BE%20%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D0%B5"><h3>Сообщите о проблеме</h3><p>Напишите, какое у вас устройство, версию системы и что случилось, и мы разберёмся.</p><span>Написать нам →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="1"><h3>Поделитесь отзывом</h3><p>Что вам нравится? Что мешает? Поможет даже одна строка.</p><span>Написать нам →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="2"><h3>Предложите функцию</h3><p>Опишите, что вы хотите от MAControl. Лучшие идеи рождаются из реального использования.</p><span>Написать нам →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="3"><h3>Сообщите о проблеме</h3><p>Напишите, какое у вас устройство, версию системы и что случилось, и мы разберёмся.</p><span>Написать нам →</span></a>
     <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%D0%BF%D1%80%D0%B8%D0%B2%D0%B5%D1%82"><h3>Просто напишите письмо</h3><p>Форма не нужна: пишите, когда хотите.</p><span>immersivecrafting@icloud.com →</span></a>
    </div>
    <form class="fbform card glow-blue rv" id="fbform" data-to="immersivecrafting@icloud.com" data-s1="MAControl: отзыв" data-s2="MAControl: предложение функции" data-s3="MAControl: сообщение о проблеме" data-s4="MAControl: привет" data-dev="Устройство" data-from="Отправлено с сайта MAControl">
     <label>О чём вы пишете?<select name="type"><option value="1">Отзыв</option><option value="2">Предложение функции</option><option value="3">Проблема</option><option value="4">Другое</option></select></label>
     <label>Ваше устройство (необязательно)<select name="device"><option value="">Не указано</option><option>iPhone</option><option>iPad</option><option>iPhone Duo</option><option>Apple Vision Pro</option><option>Mac</option></select></label>
     <label>Ваше сообщение<textarea name="msg" rows="6" required placeholder="Пишите здесь…"></textarea></label>
-    <button class="btn btn-primary" type="submit">Отправить по почте</button>
+    <label class="fbcheck"><input type="checkbox" name="ok" required> <span>Подтверждаю, что MAControl установлен на моём устройстве</span></label>
+    <button class="btn btn-primary" type="submit" disabled>Отправить по почте</button>
     <p class="fb-note">Откроется ваше почтовое приложение с готовым сообщением. Сайт ничего не сохраняет.</p>
    </form>
   </div>
@@ -621,11 +625,17 @@ footer .maker{display:flex;gap:16px}
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
   var fb=document.getElementById("fbform");
-  if(fb){fb.addEventListener("submit",function(e){
+  if(fb){
+    var ok=fb.elements.ok, go=fb.querySelector("button[type=submit]");
+    ok.addEventListener("change",function(){go.disabled=!ok.checked});
+    document.querySelectorAll(".fbcard[data-type]").forEach(function(a){a.addEventListener("click",function(){
+      fb.elements.type.value=a.getAttribute("data-type"); setTimeout(function(){fb.elements.msg.focus({preventScroll:true})},500)})});
+    fb.addEventListener("submit",function(e){
     e.preventDefault();
     var f=fb.elements, sub=fb.getAttribute("data-s"+f.type.value), dev=f.device.value, body=f.msg.value.trim();
     if(dev) body+="\n\n"+fb.getAttribute("data-dev")+": "+dev;
     body+="\n\n— "+fb.getAttribute("data-from")+" ("+LANG+")";
+    if(!ok.checked) return;
     location.href="mailto:"+fb.getAttribute("data-to")+"?subject="+encodeURIComponent(sub)+"&body="+encodeURIComponent(body);
   })}
   if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}

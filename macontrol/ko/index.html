@@ -300,6 +300,9 @@ footer .maker{display:flex;gap:16px}
 @media(max-width:900px){.fb{grid-template-columns:1fr}}
 @media(max-width:560px){.fbcards{grid-template-columns:1fr}.fbform .btn{align-self:stretch}}
 .steps.nonum .step:before{display:none}
+.fbcheck{flex-direction:row!important;align-items:flex-start;gap:12px!important;font-weight:500!important;color:var(--text)!important;cursor:pointer}
+.fbcheck input{width:20px;height:20px;margin-top:2px;accent-color:#6BD6FF;flex:none;cursor:pointer}
+.fbform .btn:disabled{opacity:.4;cursor:not-allowed;box-shadow:none}
 
 </style>
 </head>
@@ -543,16 +546,17 @@ footer .maker{display:flex;gap:16px}
   <div class="head center rv"><div class="eyebrow">개선을 도와주세요</div><h2 class="display">어떻게 생각하시는지 알려 주세요.</h2><p class="lead">소감, 갖고 싶은 기능, 발견한 문제, 아니면 그냥 인사도 좋습니다. 편한 방법으로 연락 주세요.</p></div>
   <div class="fb">
    <div class="fbcards">
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%EC%9D%98%EA%B2%AC"><h3>의견 보내기</h3><p>마음에 드는 점은요? 불편한 점은요? 한 줄만으로도 도움이 됩니다.</p><span>메일 보내기 →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%EA%B8%B0%EB%8A%A5%20%EC%9A%94%EC%B2%AD"><h3>기능 요청</h3><p>MAControl이 해 주었으면 하는 것을 적어 주세요. 최고의 아이디어는 실제 사용 방식에서 나옵니다.</p><span>메일 보내기 →</span></a>
-    <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%EB%AC%B8%EC%A0%9C%20%EC%8B%A0%EA%B3%A0"><h3>문제 신고</h3><p>사용 중인 기기, 시스템 버전, 어떤 일이 있었는지 알려 주시면 확인하겠습니다.</p><span>메일 보내기 →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="1"><h3>의견 보내기</h3><p>마음에 드는 점은요? 불편한 점은요? 한 줄만으로도 도움이 됩니다.</p><span>메일 보내기 →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="2"><h3>기능 요청</h3><p>MAControl이 해 주었으면 하는 것을 적어 주세요. 최고의 아이디어는 실제 사용 방식에서 나옵니다.</p><span>메일 보내기 →</span></a>
+    <a class="fbcard rv" href="#fbform" data-type="3"><h3>문제 신고</h3><p>사용 중인 기기, 시스템 버전, 어떤 일이 있었는지 알려 주시면 확인하겠습니다.</p><span>메일 보내기 →</span></a>
     <a class="fbcard rv" href="mailto:immersivecrafting@icloud.com?subject=MAControl%3A%20%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94"><h3>이메일 보내기</h3><p>양식은 필요 없습니다. 언제든 편하게 써 주세요.</p><span>immersivecrafting@icloud.com →</span></a>
    </div>
    <form class="fbform card glow-blue rv" id="fbform" data-to="immersivecrafting@icloud.com" data-s1="MAControl: 의견" data-s2="MAControl: 기능 요청" data-s3="MAControl: 문제 신고" data-s4="MAControl: 안녕하세요" data-dev="기기" data-from="MAControl 웹사이트에서 보냄">
     <label>어떤 내용인가요?<select name="type"><option value="1">의견</option><option value="2">기능 요청</option><option value="3">문제</option><option value="4">기타</option></select></label>
     <label>사용 중인 기기(선택)<select name="device"><option value="">지정 안 함</option><option>iPhone</option><option>iPad</option><option>iPhone Duo</option><option>Apple Vision Pro</option><option>Mac</option></select></label>
     <label>메시지<textarea name="msg" rows="6" required placeholder="여기에 입력하세요…"></textarea></label>
-    <button class="btn btn-primary" type="submit">이메일로 보내기</button>
+    <label class="fbcheck"><input type="checkbox" name="ok" required> <span>내 기기에 MAControl이 설치되어 있음을 확인합니다</span></label>
+    <button class="btn btn-primary" type="submit" disabled>이메일로 보내기</button>
     <p class="fb-note">메일 앱이 열리고 보낼 메시지가 준비됩니다. 이 사이트에는 아무것도 저장되지 않습니다.</p>
    </form>
   </div>
@@ -621,11 +625,17 @@ footer .maker{display:flex;gap:16px}
   }
   window.addEventListener("scroll",onScroll,{passive:true}); onScroll();
   var fb=document.getElementById("fbform");
-  if(fb){fb.addEventListener("submit",function(e){
+  if(fb){
+    var ok=fb.elements.ok, go=fb.querySelector("button[type=submit]");
+    ok.addEventListener("change",function(){go.disabled=!ok.checked});
+    document.querySelectorAll(".fbcard[data-type]").forEach(function(a){a.addEventListener("click",function(){
+      fb.elements.type.value=a.getAttribute("data-type"); setTimeout(function(){fb.elements.msg.focus({preventScroll:true})},500)})});
+    fb.addEventListener("submit",function(e){
     e.preventDefault();
     var f=fb.elements, sub=fb.getAttribute("data-s"+f.type.value), dev=f.device.value, body=f.msg.value.trim();
     if(dev) body+="\n\n"+fb.getAttribute("data-dev")+": "+dev;
     body+="\n\n— "+fb.getAttribute("data-from")+" ("+LANG+")";
+    if(!ok.checked) return;
     location.href="mailto:"+fb.getAttribute("data-to")+"?subject="+encodeURIComponent(sub)+"&body="+encodeURIComponent(body);
   })}
   if(!("IntersectionObserver" in window)){document.querySelectorAll(".rv").forEach(function(e){e.classList.add("in")});return}
