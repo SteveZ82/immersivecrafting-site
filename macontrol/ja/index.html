@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>MAControl — あなたのMacを、どこへでも。</title>
-<meta name="description" content="iPhone、iPad、Apple Vision ProからMacを操作。ポスト量子エンドツーエンド暗号化、60 fpsのHEVC、ポート開放は不要。10言語に対応。発売記念価格€9.99。">
+<meta name="description" content="iPhone、iPad、Apple Vision ProからMacを操作。Macのデスクトップが画面に合わせて形を変え、iPhoneと同じように入力でき、すべてがポスト量子エンドツーエンド暗号化。60 fpsでなめらか、ポート開放は不要。発売記念価格€9.99。">
 <meta name="theme-color" content="#05070F">
 <meta property="og:title" content="MAControl — あなたのMacを、どこへでも。">
-<meta property="og:description" content="iPhone、iPad、Apple Vision ProからMacを操作。ポスト量子エンドツーエンド暗号化、60 fpsのHEVC、ポート開放は不要。10言語に対応。発売記念価格€9.99。">
+<meta property="og:description" content="iPhone、iPad、Apple Vision ProからMacを操作。Macのデスクトップが画面に合わせて形を変え、iPhoneと同じように入力でき、すべてがポスト量子エンドツーエンド暗号化。60 fpsでなめらか、ポート開放は不要。発売記念価格€9.99。">
 <meta property="og:image" content="../assets/vision-1200.jpg">
 <meta property="og:locale" content="ja_JP">
 <link rel="alternate" hreflang="en" href="https://immersivecrafting.com/macontrol/">
@@ -315,6 +315,10 @@ footer .maker{display:flex;gap:16px}
 .fbaddr{display:block;margin-top:6px;font-size:13px;color:var(--cyan);word-break:break-all}
 @media(max-width:560px){.fbopts{grid-template-columns:1fr}}
 
+/* Etichetta «Novità» sulle funzioni nuove */
+.newtag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#0B1020;background:linear-gradient(90deg,var(--cyan),#9BE7FF);padding:4px 9px;border-radius:999px;margin-bottom:10px}
+.case .newtag{margin-left:8px;vertical-align:4px}
+
 </style>
 </head>
 <body>
@@ -322,7 +326,7 @@ footer .maker{display:flex;gap:16px}
 <header class="nav" id="nav">
  <div class="wrap">
   <a class="brand" href="#top"><img src="../assets/icon-256.png" alt="">MAControl</a>
-  <nav class="nav-links"><a href="#features">機能</a><a href="#vision">Vision Pro</a><a href="#security">セキュリティ</a><a href="#pricing">価格</a><a href="#faq">よくある質問</a></nav>
+  <nav class="nav-links"><a href="#modes">モード</a><a href="#typing">入力</a><a href="#vision">Vision Pro</a><a href="#security">セキュリティ</a><a href="#pricing">価格</a><a href="#faq">よくある質問</a></nav>
   <div class="navr">
    <label class="langsel" title="言語"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.9 5.8 3.9 9s-1.3 6.2-3.9 9c-2.6-2.8-3.9-5.8-3.9-9S9.4 5.8 12 3z"/></svg><select id="langsel" aria-label="言語"><option value="en">English</option><option value="it">Italiano</option><option value="de">Deutsch</option><option value="es">Español</option><option value="fr">Français</option><option value="pt-BR">Português (Brasil)</option><option value="ja" selected>日本語</option><option value="ko">한국어</option><option value="ru">Русский</option><option value="zh-Hans">简体中文</option></select></label>
    <a class="btn btn-primary btn-sm" href="#pricing">MAControlを入手</a>
@@ -335,7 +339,7 @@ footer .maker{display:flex;gap:16px}
  <div class="wrap">
   <a class="pill" href="#pricing"><span>サイバーマンデー記念ローンチ：€19.99 → <b>€9.99</b>（50%オフ）</span><span class="tag">11/30〜12/8</span></a>
   <h1 class="display">あなたのMacを、<span class="grad">どこへでも。</span></h1>
-  <p class="lead">iPhone、iPad、Apple Vision ProからMacを操作。エンドツーエンドで暗号化され、60&nbsp;fpsでなめらか。ポートを開ける必要も、パスワードを覚える必要もありません。<sup class="fn"><a href="#fn1">1</a></sup></p>
+  <p class="lead">iPhone、iPad、Apple Vision ProからMacを操作。Macのデスクトップが画面に合わせて形を変え、iPhoneと同じように入力でき、すべてがエンドツーエンドで暗号化されて届きます。60&nbsp;fpsでなめらか、ポートを開ける必要もありません。<sup class="fn"><a href="#fn1">1</a></sup></p>
   <div class="cta">
    <a class="btn btn-primary" href="#pricing">€9.99で入手</a>
    <a class="btn btn-ghost" href="../downloads/MAControl.dmg" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0 0l-4.5-4.5M12 15l4.5-4.5M5 20h14"/></svg>Mac版をダウンロード<span class="ver">v1.0.0</span></a>
@@ -349,9 +353,104 @@ footer .maker{display:flex;gap:16px}
  <div class="devices wrap"><span><i></i>iPhone</span><span><i></i>iPad</span><span><i></i>Apple Vision Pro</span><span><i></i>iPhone Duo</span><span><i></i>Mac</span></div>
 </section>
 
+<section class="block" id="modes">
+ <div class="wrap">
+  <div class="head rv"><div class="eyebrow">Macの3つの見かた</div><h2 class="display">あなたのMacを、 <span class="grad">あなたの画面のかたちに。</span></h2><p class="lead">その時に合った表示を選び、接続したままいつでも切り替えられます。</p></div>
+  <div class="cases">
+   <div class="case wide rv">
+    <div><div class="num">1</div><span class="newtag">新機能</span><h3>iPhone · iPad</h3><p>Macのデスクトップが、画面とまったく同じかたちに。ウインドウ、Dock、メニューバーが読みやすいサイズで、端から端まで並び直します。終了すると、Macは自動で元の解像度に戻ります。</p></div>
+    <div class="dev land"><img src="../assets/iphone-full.jpg" alt="iPhoneモードで、画面に合わせて形を変えたMacのデスクトップを表示する横向きのiPhone" loading="lazy" width="1800" height="828"></div>
+   </div>
+   <div class="case tall rv">
+    <div><div class="num">2</div><h3>Match</h3><p>Macの画面をそのまま、縦向きでも横向きでもディスプレイいっぱいに。表示はポインタを追いかけます。ウインドウやレンダリング、ダウンロードをさっと確認するのに最適です。</p></div>
+    <div class="dev port"><img src="../assets/iphone-crop.jpg" alt="Matchモードで、Macのデスクトップの一部を表示する縦向きのiPhone" loading="lazy" width="720" height="1565"></div>
+   </div>
+   <div class="case tall rv">
+    <div><div class="num">3</div><h3>App Context</h3><p>アプリをひとつだけ、手元のデバイスに合わせたウインドウサイズで。iPhoneのアプリのような使い心地なのに、動いているのはMacです。</p></div>
+    <div class="dev port"><img src="../assets/iphone-app.jpg" alt="App Contextモードで、Macのアプリをひとつだけ表示する縦向きのiPhone" loading="lazy" width="720" height="1565"></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="typing">
+ <div class="wrap">
+  <div class="head rv"><div class="eyebrow">入力</div><h2 class="display">まるで <span class="grad">iPhoneのように入力。</span></h2><p class="lead">Macのテキストフィールドをクリックして、入力するだけ。iPhoneでおなじみの操作がすべて使え、1文字ずつすぐにMacに届きます。</p></div>
+  <div class="bento">
+   <div class="card c4 glow-blue rv">
+    <span class="newtag">新機能</span>
+    <h3>本物のiPhoneのテキストフィールド</h3>
+    <p>キーボードの上に、Macのフィールドのテキストが本物のiOSテキストフィールドとして表示されます。長押しでルーペ、グラブポイントをドラッグ、単語をダブルタップ、コピー＆ペースト。Macはそのすべてについてきます。</p>
+    <div class="chips cy"><span>ルーペ</span><span>グラブポイント</span><span>コピー＆ペースト</span><span>スペースバーでトラックパッド</span></div>
+   </div>
+   <div class="card c2 rv">
+    <div class="big grad">0</div><div class="unit">入力中の待ち時間</div>
+    <p>文字は入力した瞬間に表示され、5GでもMacと同期したままです。</p>
+   </div>
+   <div class="card c2 rv"><h3>必要なときだけ現れるキーボード</h3><p>テキストフィールドの中をクリックしたときだけ開き、ウインドウを動かしたりアプリを切り替えたりしても開きません。入力が終われば閉じます。</p></div>
+   <div class="card c2 rv"><span class="newtag">新機能</span><h3>Focus Zoom</h3><p>入力中のフィールドを、キーボードの上に拡大表示。タップでカーソルを置き、グラブポイントをドラッグし、ダブルタップで選択。すべてMacのテキスト上で直接操作できます。</p></div>
+   <div class="card c2 rv"><h3>指の下にルーペ</h3><p>指を止めると、ポインタの下にあるものをルーペで正確に表示。クリックとドラッグのリングも見えるので、ピクセル単位で狙えます。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="vision">
+ <div class="wrap">
+  <div class="show">
+   <div class="media rv">
+    <div class="shot"><img src="../assets/vision-1200.jpg" srcset="../assets/vision-1200.jpg 1200w, ../assets/vision-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 640px" alt="Apple Vision Pro上のMAControlウインドウ" loading="lazy" width="2400" height="1350"></div>
+    <div class="minis" style="grid-template-columns:.806fr .725fr">
+     <div class="shot"><img src="../assets/vision-side.jpg" alt="サイドバー：接続、FullScreen、App Context、設定" loading="lazy" width="500" height="620"></div>
+     <div class="shot"><img src="../assets/vision-panel.jpg" alt="経路、遅延、ポスト量子セキュリティを表示する接続パネル" loading="lazy" width="620" height="855"></div>
+    </div>
+   </div>
+   <div class="rv">
+    <div class="eyebrow">Apple Vision Pro</div>
+    <h2 class="display" style="font-size:clamp(38px,5.4vw,64px);margin-top:14px">あなたのMacを、 <span class="grad">あなたの空間に。</span></h2>
+    <p class="lead" style="margin-top:18px">Macは机の上の四角い画面ではなくなります。部屋の好きな場所に、好きな大きさで置けるウインドウになります。</p>
+    <ul class="list">
+     <li><span class="dot">1</span><div><b>2つの表示方法</b><span>画面全体、または空間に合わせた1つのアプリ。</span></div></li>
+     <li><span class="dot">2</span><div><b>接続状況がいつでもわかる</b><span>経路、遅延、帯域、セキュリティを、浮かぶパネルでリアルタイムに。</span></div></li>
+     <li><span class="dot">3</span><div><b>iPhoneをトラックパッドに</b><span>iPhoneでMAControlを開くだけ。Vision Proが見つけて自動で接続します。<sup class="fn"><a href="#fn2">2</a></sup></span></div></li>
+    </ul>
+   </div>
+  </div>
+  <div class="head rv" style="margin-top:96px"><div class="eyebrow">Vision Proの新機能</div><h2 class="display" style="font-size:clamp(34px,4.8vw,58px)">手、キー、トラックパッド。 <span class="grad">選ぶのはあなた。</span></h2></div>
+  <div class="bento">
+   <div class="card c6 padcard glow-blue rv" id="trackpad">
+    <div>
+     <div class="eyebrow">iPhone + Vision Pro</div>
+     <h3>iPhoneがトラックパッドとキーボードに</h3>
+     <p>iPhoneでMAControlを開き、ヘッドセットから選ぶだけ。コードの入力は不要で、同じApple Accountなら自動で接続します。部屋に浮かぶ画面を見ながら、ポインタの移動、クリック、ドラッグ、スクロール、Macのジェスチャが使えます。<sup class="fn"><a href="#fn2">2</a></sup></p>
+     <div class="chips cy"><span>コード不要</span><span>フルキーボード</span><span>Macのジェスチャ</span></div>
+    </div>
+    <div class="padshot"><img src="../assets/duo-pad-900.jpg" srcset="../assets/duo-pad-900.jpg 900w, ../assets/duo-pad-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 560px" alt="Apple Vision ProのトラックパッドとキーボードとしてiPhone Duoで動くMAControl：ファンクションキー付きのフルキーボードとトラックパッド" loading="lazy" width="1800" height="1266"></div>
+   </div>
+   <div class="card c3 rv"><h3>必要なときに、必要なキーボードを</h3><p>Macのテキストフィールドをクリックすると、キーボードが自動で現れます。iPhoneをトラックパッドとして接続しているあいだは入力もiPhoneから。ヘッドセットのキーボードは控え、接続を解除すると元に戻ります。</p></div>
+   <div class="card c3 rv"><h3>空中のジェスチャ</h3><p>3本指を横にスワイプしてデスクトップを切り替え、上にスワイプしてMission Control。2本指で通知センター。親指と中指で右クリック。<sup class="fn"><a href="#fn2">2</a></sup></p></div>
+   <div class="card c3 rv"><h3>大きな画面、正確な比率</h3><p>ウインドウはMacのディスプレイと同じ形になり、黒い帯は出ません。ワンタップで最大サイズに広がります。</p></div>
+   <div class="card c3 rv"><h3>Macのコマンドをいつも手元に</h3><p>⌘、コピー、ペースト、取り消し、Spotlight、アプリの切り替え、Macのロックを1つのツールバーに。</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="block" id="duo">
+ <div class="wrap">
+  <div class="head center rv"><div class="eyebrow">iPhone Duo</div><h2 class="display">折りたたむと、 <span class="grad">MacBookになる。</span></h2><p class="lead">iPhone DuoをL字に開いて机に置くと、下半分が小さなMacのキーボードとトラックパッドに。閉じれば元どおりです。</p></div>
+  <div class="duo-wrap rv" style="max-width:900px;margin:56px auto 0">
+   <div class="shot" style="border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.12)"><img src="../assets/duo-deck-900.jpg" srcset="../assets/duo-deck-900.jpg 900w, ../assets/duo-deck-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 900px" alt="ラップトップモードのiPhone Duo：下半分にフルキーボードとトラックパッド" loading="lazy" width="1800" height="1274"></div>
+  </div>
+  <div class="stats">
+   <div class="stat rv"><h3 style="font-size:21px">本物のキーボード</h3><p>ファンクションキー、矢印キー、修飾キーをMacBookと同じ配置で。すべてのキーがそのままMacに届きます。</p></div>
+   <div class="stat rv"><h3 style="font-size:21px">本物のトラックパッド</h3><p>クリック、ドラッグ、スクロールに加えて、デスクトップ、Mission Control、通知センターのジェスチャにも対応。</p></div>
+   <div class="stat rv"><h3 style="font-size:21px">シルバーまたはスペースブラック</h3><p>ヘアライン仕上げのアルミニウム。アプリはヒンジと重力を読み取り、向きを変えると画面も反転します。</p></div>
+  </div>
+ </div>
+</section>
+
 <section class="block" id="features">
  <div class="wrap">
-  <div class="head rv"><div class="eyebrow">MAControlを選ぶ理由</div><h2 class="display">Macの好きなところは、そのままに。 <span style="color:var(--dim)">あいだには何もなし。</span></h2></div>
+  <div class="head rv"><div class="eyebrow">その仕組み</div><h2 class="display">Macの好きなところは、そのままに。 <span style="color:var(--dim)">あいだには何もなし。</span></h2></div>
   <div class="bento">
    <div class="card c4 glow-blue rv" id="security">
     <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg></div>
@@ -365,16 +464,14 @@ footer .maker{display:flex;gap:16px}
    </div>
    <div class="card c2 glow-sun rv">
     <div class="big">0</div><div class="unit" style="color:var(--sun)">開けるポート</div>
-    <p>MAControlは自分でルーターを通り抜けます。あなたのデバイスの鍵がなければ、Macは応答すらしません。<sup class="fn"><a href="#fn2">2</a></sup></p>
+    <p>MAControlは自分でルーターを通り抜けます。あなたのデバイスの鍵がなければ、Macは応答すらしません。<sup class="fn"><a href="#fn3">3</a></sup></p>
     <div class="chips"><span>ローカルネットワーク</span><span>自動接続</span><span>UPnP · NAT‑PMP</span><span>ガイド付きルール</span><span>VPN</span></div>
    </div>
-   <div class="card c4 rv">
-    <h3>Macのアプリひとつを、画面にぴったりで。</h3>
-    <p>App Contextはアプリをひとつだけ送り、手元のデバイスに合わせてウインドウのサイズを変えます。画面全体や、ポインタを追う切り取り表示も選べます。</p>
-    <div class="minis">
-     <div class="phone"><img src="../assets/iphone-modes.jpg" alt="モードを選択：FullScreen、切り取り、App Context" loading="lazy" width="552" height="1200"></div>
-     <div class="phone"><img src="../assets/iphone-apps.jpg" alt="App Context：Macのアプリを選択" loading="lazy" width="552" height="1200"></div>
-    </div>
+   <div class="card c4 rv" id="5g">
+    <div class="eyebrow">5G</div>
+    <h3>5Gでも、なめらか。</h3>
+    <p>MAControlはビデオ通話と同じようにネットワークを読み取ります。本当の混雑とモバイル通信によくある揺らぎを見分けて動きのなめらかさを保ち、本当に必要なときだけ精細さを下げます。</p>
+    <div class="chips cy"><span>画質を自動調整</span><span>低遅延HEVC</span><span>なめらかさ優先</span></div>
    </div>
    <div class="card c6 p2p glow-blue rv" id="peer-to-peer">
     <div>
@@ -408,87 +505,13 @@ footer .maker{display:flex;gap:16px}
  </div>
 </section>
 
-<section class="block" id="iphone">
- <div class="wrap">
-  <div class="head rv"><div class="eyebrow">iPhoneで</div><h2 class="display">Macを手にする <span class="grad">3つの方法。</span></h2><p class="lead">その場に合った表示を選べます。</p></div>
-  <div class="cases">
-   <div class="case wide rv">
-    <div><div class="num">1</div><h3>FullScreen</h3><p>iPhoneを横向きにすると、デスクトップ全体が表示されます。すべてのウインドウ、メニューバー、Dockまで。レンダリング、ダウンロード、ビルドの様子を見守るのに最適です。</p></div>
-    <div class="dev land"><img src="../assets/iphone-full.jpg" alt="横向きのiPhoneにMacのデスクトップ全体を表示したFullScreenモード" loading="lazy" width="1800" height="828"></div>
-   </div>
-   <div class="case tall rv">
-    <div><div class="num">2</div><h3>切り取り</h3><p>Macの画面を読みやすい大きさで、縦向きのまま片手で。表示はポインタを追いかけます。メモにチェックを入れる、メッセージに返信する、ダイアログを閉じる。</p></div>
-    <div class="dev port"><img src="../assets/iphone-crop.jpg" alt="縦向きのiPhoneにMacのデスクトップの一部を表示した切り取りモード" loading="lazy" width="720" height="1565"></div>
-   </div>
-   <div class="case tall rv">
-    <div><div class="num">3</div><h3>App Context</h3><p>アプリをひとつだけ、ウインドウをiPhoneに合わせたサイズにして表示します。iPhoneのアプリのように見えますが、動いているのはあなたのMacです。</p></div>
-    <div class="dev port"><img src="../assets/iphone-app.jpg" alt="縦向きのiPhoneにMacのアプリをひとつ表示したApp Contextモード" loading="lazy" width="720" height="1565"></div>
-   </div>
-  </div>
- </div>
-</section>
-
-<section class="block" id="vision">
- <div class="wrap">
-  <div class="show">
-   <div class="media rv">
-    <div class="shot"><img src="../assets/vision-1200.jpg" srcset="../assets/vision-1200.jpg 1200w, ../assets/vision-2400.jpg 2400w" sizes="(max-width:900px) 100vw, 640px" alt="Apple Vision Pro上のMAControlウインドウ" loading="lazy" width="2400" height="1350"></div>
-    <div class="minis" style="grid-template-columns:.806fr .725fr">
-     <div class="shot"><img src="../assets/vision-side.jpg" alt="サイドバー：接続、FullScreen、App Context、設定" loading="lazy" width="500" height="620"></div>
-     <div class="shot"><img src="../assets/vision-panel.jpg" alt="経路、遅延、ポスト量子セキュリティを表示する接続パネル" loading="lazy" width="620" height="855"></div>
-    </div>
-   </div>
-   <div class="rv">
-    <div class="eyebrow">Apple Vision Pro</div>
-    <h2 class="display" style="font-size:clamp(38px,5.4vw,64px);margin-top:14px">あなたのMacを、 <span class="grad">あなたの空間に。</span></h2>
-    <p class="lead" style="margin-top:18px">Macは机の上の四角い画面ではなくなります。部屋の好きな場所に、好きな大きさで置けるウインドウになります。</p>
-    <ul class="list">
-     <li><span class="dot">1</span><div><b>2つの表示方法</b><span>画面全体、または空間に合わせた1つのアプリ。</span></div></li>
-     <li><span class="dot">2</span><div><b>接続状況がいつでもわかる</b><span>経路、遅延、帯域、セキュリティを、浮かぶパネルでリアルタイムに。</span></div></li>
-     <li><span class="dot">3</span><div><b>iPhoneをトラックパッドに</b><span>iPhoneでMAControlを開くだけ。Vision Proが見つけて自動で接続します。<sup class="fn"><a href="#fn3">3</a></sup></span></div></li>
-    </ul>
-   </div>
-  </div>
-  <div class="head rv" style="margin-top:96px"><div class="eyebrow">Vision Proの新機能</div><h2 class="display" style="font-size:clamp(34px,4.8vw,58px)">手、キー、トラックパッド。 <span class="grad">選ぶのはあなた。</span></h2></div>
-  <div class="bento">
-   <div class="card c6 padcard glow-blue rv" id="trackpad">
-    <div>
-     <div class="eyebrow">iPhone + Vision Pro</div>
-     <h3>iPhoneがトラックパッドとキーボードに</h3>
-     <p>iPhoneでMAControlを開き、ヘッドセットから選ぶだけ。コードの入力は不要で、同じApple Accountなら自動で接続します。部屋に浮かぶ画面を見ながら、ポインタの移動、クリック、ドラッグ、スクロール、Macのジェスチャが使えます。<sup class="fn"><a href="#fn3">3</a></sup></p>
-     <div class="chips cy"><span>コード不要</span><span>フルキーボード</span><span>Macのジェスチャ</span></div>
-    </div>
-    <div class="padshot"><img src="../assets/duo-pad-900.jpg" srcset="../assets/duo-pad-900.jpg 900w, ../assets/duo-pad-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 560px" alt="Apple Vision ProのトラックパッドとキーボードとしてiPhone Duoで動くMAControl：ファンクションキー付きのフルキーボードとトラックパッド" loading="lazy" width="1800" height="1266"></div>
-   </div>
-   <div class="card c3 rv"><h3>必要なときに、必要なキーボードを</h3><p>Macのテキストフィールドをクリックすると、キーボードが自動で現れます。iPhoneをトラックパッドとして接続しているあいだは入力もiPhoneから。ヘッドセットのキーボードは控え、接続を解除すると元に戻ります。</p></div>
-   <div class="card c3 rv"><h3>空中のジェスチャ</h3><p>3本指を横にスワイプしてデスクトップを切り替え、上にスワイプしてMission Control。2本指で通知センター。親指と中指で右クリック。<sup class="fn"><a href="#fn3">3</a></sup></p></div>
-   <div class="card c3 rv"><h3>大きな画面、正確な比率</h3><p>ウインドウはMacのディスプレイと同じ形になり、黒い帯は出ません。ワンタップで最大サイズに広がります。</p></div>
-   <div class="card c3 rv"><h3>Macのコマンドをいつも手元に</h3><p>⌘、コピー、ペースト、取り消し、Spotlight、アプリの切り替え、Macのロックを1つのツールバーに。</p></div>
-  </div>
- </div>
-</section>
-
-<section class="block" id="duo">
- <div class="wrap">
-  <div class="head center rv"><div class="eyebrow">iPhone Duo</div><h2 class="display">折りたたむと、 <span class="grad">MacBookになる。</span></h2><p class="lead">iPhone DuoをL字に開いて机に置くと、下半分が小さなMacのキーボードとトラックパッドに。閉じれば元どおりです。</p></div>
-  <div class="duo-wrap rv" style="max-width:900px;margin:56px auto 0">
-   <div class="shot" style="border-radius:var(--r);overflow:hidden;border:1px solid rgba(255,255,255,.12)"><img src="../assets/duo-deck-900.jpg" srcset="../assets/duo-deck-900.jpg 900w, ../assets/duo-deck-1800.jpg 1800w" sizes="(max-width:900px) 100vw, 900px" alt="ラップトップモードのiPhone Duo：下半分にフルキーボードとトラックパッド" loading="lazy" width="1800" height="1274"></div>
-  </div>
-  <div class="stats">
-   <div class="stat rv"><h3 style="font-size:21px">本物のキーボード</h3><p>ファンクションキー、矢印キー、修飾キーをMacBookと同じ配置で。すべてのキーがそのままMacに届きます。</p></div>
-   <div class="stat rv"><h3 style="font-size:21px">本物のトラックパッド</h3><p>クリック、ドラッグ、スクロールに加えて、デスクトップ、Mission Control、通知センターのジェスチャにも対応。</p></div>
-   <div class="stat rv"><h3 style="font-size:21px">シルバーまたはスペースブラック</h3><p>ヘアライン仕上げのアルミニウム。アプリはヒンジと重力を読み取り、向きを変えると画面も反転します。</p></div>
-  </div>
- </div>
-</section>
-
 <section class="block" id="speed">
  <div class="wrap">
   <div class="head rv"><div class="eyebrow">速さと信頼性</div><h2 class="display">まるでMacが <span class="grad">目の前にあるように。</span></h2><p class="lead">デバイスはQUICでMacと直接つながり、中継はありません。ひとつの経路がふさがれていても、MAControlはすでに別の道を用意しています。</p></div>
   <div class="stats">
    <div class="stat rv"><div class="big">60<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> fps</span></div><p><b style="color:var(--text)">自宅で。</b> 45 fpsを下回らず、最大60&nbsp;Mbps。<sup class="fn"><a href="#fn4">4</a></sup></p></div>
    <div class="stat rv"><div class="big">60<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> fps</span></div><p><b style="color:var(--text)">VPN経由で。</b> どこにいても最大25&nbsp;Mbps。<sup class="fn"><a href="#fn5">5</a></sup></p></div>
-   <div class="stat rv"><div class="big">1600<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> px</span></div><p><b style="color:var(--text)">インターネット経由で。</b> 最大16&nbsp;Mbpsで自動調整。5Gでも。<sup class="fn"><a href="#fn6">6</a></sup></p></div>
+   <div class="stat rv"><div class="big">1600<span style="font-size:.32em;color:var(--cyan);letter-spacing:0"> px</span></div><p><b style="color:var(--text)">インターネット経由で。</b> 5Gでも最大16&nbsp;Mbpsで自動調整。なめらかさより先に精細さを下げます。<sup class="fn"><a href="#fn6">6</a></sup></p></div>
   </div>
  </div>
 </section>
@@ -516,7 +539,8 @@ footer .maker{display:flex;gap:16px}
     <div class="for">iPhone · iPad · Apple Vision Pro</div>
     <div class="price"><span class="now">€9.99</span><span class="was">€19.99</span><sup class="fn"><a href="#fn7">7</a></sup></div>
     <ul>
-     <li>FullScreen、切り取り、App Contextモード</li>
+     <li>iPhone/iPad、Match、App Contextモード</li>
+     <li>iPhoneと同じテキスト編集</li>
      <li>iPhone Duoのラップトップモード</li>
      <li>iPhoneをVision Proのトラックパッドとキーボードに</li>
      <li>ポスト量子エンドツーエンド暗号化</li>
@@ -578,11 +602,13 @@ footer .maker{display:flex;gap:16px}
  <div class="wrap">
   <div class="head center rv"><h2 class="display">Q&amp;A</h2></div>
   <div class="faq rv">
-   <details><summary>ルーターのポートを開ける必要はありますか？</summary><p>いいえ。自動接続がルーターを通り抜けます。とても厳しいネットワークでのみ、ガイド付きルールかTailscaleなどのVPNが必要で、アプリが手順を案内します。<sup class="fn"><a href="#fn2">2</a></sup></p></details>
+   <details><summary>ルーターのポートを開ける必要はありますか？</summary><p>いいえ。自動接続がルーターを通り抜けます。とても厳しいネットワークでのみ、ガイド付きルールかTailscaleなどのVPNが必要で、アプリが手順を案内します。<sup class="fn"><a href="#fn3">3</a></sup></p></details>
    <details><summary>アカウントは必要ですか？</summary><p>MAControl独自のアカウントやパスワードはありません。外出先ではiCloudを使い、Macのアドレスはエンドツーエンドで暗号化されて保存されます。<sup class="fn"><a href="#fn8">8</a></sup></p></details>
    <details><summary>モバイル通信でも使えますか？</summary><p>はい、5Gでも使えます。画質は作業中の帯域に合わせて自動で調整されます。<sup class="fn"><a href="#fn6">6</a></sup></p></details>
    <details><summary>Macがスリープ中やロック中のときは？</summary><p>スリープ中のMacには外から接続できないため、画面はオフでも本体はオンのままにしてください。ロック中ならアプリから解除できます。パスワードは暗号化されて送られ、保存されることはありません。</p></details>
    <details><summary>どの言語に対応していますか？</summary><p>日本語、英語、イタリア語、ドイツ語、スペイン語、フランス語、韓国語、ポルトガル語（ブラジル）、ロシア語、簡体字中国語です。MAControlはデバイスの言語を自動で使います。</p></details>
+   <details><summary>iPhone/iPadモードはMacの解像度を変更しますか？</summary><p>使っている間だけです。Macはあなたの画面のかたちに合わせたデスクトップを描画し、Mac本体のディスプレイにも同じ画像が表示されます。モードを切り替える、アプリを閉じる、または接続を切ると、Macはすぐに元の解像度に戻ります。Macの画面がデバイスの画面よりすでに小さい場合は、何も変わりません。</p></details>
+   <details><summary>iPhoneからテキストを正確に編集できますか？</summary><p>はい。キーボードの上に、Macのフィールドのテキストが入った本物のiOSテキストフィールドが表示されます。ルーペ、グラブポイント、ダブルタップ、コピー＆ペースト、スペースバーでのトラックパッド操作がすべて使えます。Focus Zoomなら、拡大したフィールド上で直接同じ操作ができます。</p></details>
    <details><summary>「永続サポート」とは？</summary><p>クライアントの支払いは一度だけ。App内課金も広告もありません。アプリはずっとあなたのもので、今後のアップデートとサポートが含まれます。サブスクリプションはありません。<sup class="fn"><a href="#fn7">7</a></sup></p></details>
   </div>
  </div>
@@ -600,7 +626,7 @@ footer .maker{display:flex;gap:16px}
 </main>
 
 <footer>
- <div class="wrap notes"><ol><li id="fn1"><b>1.</b><span>フレームレートと画質はネットワークによって変わります。Wi‑Fiの規格と混雑状況、ルーターからの距離、Macの機種と負荷に左右されます。接続が弱くなると、MAControlは動きの滑らかさを保つために精細さを下げます。</span></li><li id="fn2"><b>2.</b><span>自動接続はほとんどの家庭用ネットワークで機能します。キャリアグレードNAT配下や、ファイアウォールが厳しいネットワーク（オフィス、ホテル、公衆Wi‑Fiなど）では、ルーターでのポート設定やVPNが必要になる場合があります。</span></li><li id="fn3"><b>3.</b><span>iPhoneとApple Vision Proは同じWi‑Fiネットワークに接続している必要があります。ハンドジェスチャにはハンドトラッキングの許可が必要で、使用中はほかのアプリのウインドウが非表示になります。</span></li><li id="fn4"><b>4.</b><span>自宅のネットワークでは、フレームレートと帯域幅はルーター、使用中のWi‑Fi規格、ルーターからデバイスまでの距離によって変わります。</span></li><li id="fn5"><b>5.</b><span>VPN経由の性能は、ご自身で構築したネットワーク（Tailscaleやルーター内蔵のVPNなど）または契約したサービスによって変わります。MAControlにVPNは含まれていません。</span></li><li id="fn6"><b>6.</b><span>外出先での品質は、Macのインターネット回線の上り速度と、利用中のネットワークのエリアと速度によって変わります。5Gの利用可否は通信事業者と契約プランによります。</span></li><li id="fn7"><b>7.</b><span>発売記念価格は2026年11月30日から12月8日まで、その後は€19.99です。価格は税込みで、国や地域によって異なる場合があります。アップデートとサポートは、製品の提供期間中、追加料金なしで提供されます。</span></li><li id="fn8"><b>8.</b><span>外出先からのアクセスには、Macが電源オン・スリープしていない状態でインターネットに接続され、各デバイスが同じApple AccountでiCloudにサインインしている必要があります。</span></li></ol></div>
+ <div class="wrap notes"><ol><li id="fn1"><b>1.</b><span>フレームレートと画質はネットワークによって変わります。Wi‑Fiの規格と混雑状況、ルーターからの距離、Macの機種と負荷に左右されます。接続が弱くなると、MAControlは動きの滑らかさを保つために精細さを下げます。</span></li><li id="fn2"><b>2.</b><span>iPhoneとApple Vision Proは同じWi‑Fiネットワークに接続している必要があります。ハンドジェスチャにはハンドトラッキングの許可が必要で、使用中はほかのアプリのウインドウが非表示になります。</span></li><li id="fn3"><b>3.</b><span>自動接続はほとんどの家庭用ネットワークで機能します。キャリアグレードNAT配下や、ファイアウォールが厳しいネットワーク（オフィス、ホテル、公衆Wi‑Fiなど）では、ルーターでのポート設定やVPNが必要になる場合があります。</span></li><li id="fn4"><b>4.</b><span>自宅のネットワークでは、フレームレートと帯域幅はルーター、使用中のWi‑Fi規格、ルーターからデバイスまでの距離によって変わります。</span></li><li id="fn5"><b>5.</b><span>VPN経由の性能は、ご自身で構築したネットワーク（Tailscaleやルーター内蔵のVPNなど）または契約したサービスによって変わります。MAControlにVPNは含まれていません。</span></li><li id="fn6"><b>6.</b><span>外出先での品質は、Macのインターネット回線の上り速度と、利用中のネットワークのエリアと速度によって変わります。5Gの利用可否は通信事業者と契約プランによります。</span></li><li id="fn7"><b>7.</b><span>発売記念価格は2026年11月30日から12月8日まで、その後は€19.99です。価格は税込みで、国や地域によって異なる場合があります。アップデートとサポートは、製品の提供期間中、追加料金なしで提供されます。</span></li><li id="fn8"><b>8.</b><span>外出先からのアクセスには、Macが電源オン・スリープしていない状態でインターネットに接続され、各デバイスが同じApple AccountでiCloudにサインインしている必要があります。</span></li></ol></div>
  <div class="wrap legal"><span>© 2026 MAControl</span><a href="privacy.html">プライバシーポリシー</a><a href="support.html">サポート</a><span>iPhone、iPad、Mac、Apple Vision Pro、App StoreはApple Inc.の商標です。</span><span class="maker"><a href="https://immersivecrafting.com" rel="me">Immersive Crafting (RDL)</a><a href="https://www.instagram.com/immersivecrafting" rel="me">Instagram</a></span></div>
 </footer>
 
